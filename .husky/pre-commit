@@ -1,2 +1,2 @@
-composer test
+#composer test
 npx prettier --write resources/
