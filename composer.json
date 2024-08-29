@@ -59,7 +59,7 @@
         "test:types": "phpstan analyse",
         "test:unit": "pest --parallel --min=100",
         "test": [
-            "@test:lint",
+            "@lint",
             "@test:refactor",
             "@test:types",
             "@test:unit"
