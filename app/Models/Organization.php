@@ -9,13 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * @property int $id
- * @property string $name
- * @property Carbon $created_at
- * @property Carbon $updated_at
- * @property-read Collection<int, User> $members
- */
 final class Organization extends Model
 {
     /** @use HasFactory<OrganizationFactory> */
@@ -40,5 +33,18 @@ final class Organization extends Model
     public function members(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+        ];
     }
 }

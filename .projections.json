@@ -9,10 +9,7 @@
     "alternate": "tests/Unit/ViewModels/{}Test.php"
   },
   "app/*.php": {
-    "alternate": [
-      "tests/Unit/{}Test.php",
-      "tests/Feature/{}Test.php"
-    ]
+    "alternate": ["tests/Unit/{}Test.php", "tests/Feature/{}Test.php"]
   },
   "tests/Feature/*Test.php": {
     "alternate": "app/{}.php"

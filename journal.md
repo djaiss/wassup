@@ -1,6 +1,6 @@
 ## Aug 28th 2024
 
-I've created the Laravel skeleton. I've chosen so far to use Pest and Livewire. 
+I've created the Laravel skeleton. I've chosen so far to use Pest and Livewire.
 
 I honestly wonder whether both choices are good choices. In the past, I've found that Pest was not a good choice for me, as I didn't like its syntax at all. It's almost too elegant. I know, weird. I find it harder to read than PHPUnit.
 
@@ -13,7 +13,7 @@ Fortunately, Pinkary (the project) has been released in open source. It uses Liv
 I've setup the inital tools needed to lint and test the code:
 
 - PHPStan is setup. I've tried using it at the max level, but it's just impossible. Even on a fresh Laravel install, it's impossible to get it to work. I've set it to level 8 and it seems ok so far.
-- I've setup Rector. I didn't know it - Pinkary gave me the idea. From what I see, it's a linter. 
+- I've setup Rector. I didn't know it - Pinkary gave me the idea. From what I see, it's a linter.
 - I've also setup Laravel pint. It's just great. I've copied/paste the preset from Pinkary since it's a great starting point. Also, it will force me to enforce strong typing in the code.
 
 ## Aug 29th 2024
