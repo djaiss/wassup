@@ -7,13 +7,14 @@ namespace App\Models;
 use Database\Factories\OrganizationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class Organization extends Model
+final class Member extends Model
 {
     use HasFactory;
 
-    protected $table = 'organizations';
+    protected $table = 'members';
 
     /**
      * The attributes that are mass assignable.
@@ -21,15 +22,16 @@ final class Organization extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'user_id',
+        'organization_id',
     ];
 
     /**
-     * The users the organization has.
+     * The organization the member belongs to.
      */
-    public function members(): HasMany
+    public function organization(): BelongsTo
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Organization::class);
     }
 
     /**

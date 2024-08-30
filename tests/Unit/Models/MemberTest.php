@@ -14,18 +14,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class UserTest extends TestCase
+class MemberTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_has_many_organizations(): void
+    public function it_belongs_to_an_organization(): void
     {
-        $user = User::factory()->create();
-        Member::factory()->count(2)->create([
-            'user_id' => $user->id,
-        ]);
+        $member = Member::factory()->create();
 
-        $this->assertTrue($user->members()->exists());
+        $this->assertTrue($member->organization()->exists());
     }
 }
