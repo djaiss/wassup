@@ -10,9 +10,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function (): void {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('organizations', [OrganizationController::class, 'index'])->name('organizations.index');
     Route::get('organizations/new', [OrganizationController::class, 'new'])->name('organizations.new');
 });
