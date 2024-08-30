@@ -1,12 +1,5 @@
 {
-    "*.css": [
-        "prettier --write"
-    ],
-    "*.blade.php": [
-        "prettier --write"
-    ],
-    "*.php": [
-        "./vendor/bin/pint",
-        "./vendor/bin/rector"
-    ]
+  "*.css": ["prettier --write"],
+  "*.blade.php": ["prettier --write"],
+  "*.php": ["./vendor/bin/pint", "./vendor/bin/rector"]
 }
