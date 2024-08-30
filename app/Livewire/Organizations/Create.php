@@ -28,6 +28,5 @@ class Create extends Component
         } catch (UniqueConstraintViolationException) {
             $this->addError('name', trans('This name can not be taken. Please choose another one.'));
         }
-
     }
 }

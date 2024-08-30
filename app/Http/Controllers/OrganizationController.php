@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-use App\Models\Organization;
 use Illuminate\View\View;
 
 class OrganizationController extends Controller
