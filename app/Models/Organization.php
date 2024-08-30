@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class Organization extends Model
+class Organization extends Model
 {
     use HasFactory;
 
@@ -22,6 +22,7 @@ final class Organization extends Model
      */
     protected $fillable = [
         'name',
+        'slug',
     ];
 
     /**
