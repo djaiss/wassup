@@ -6,11 +6,6 @@ namespace App\Actions;
 
 use App\Models\Member;
 use App\Models\Organization;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Str;
 
 class CreateOrganization
@@ -19,7 +14,8 @@ class CreateOrganization
 
     public function __construct(
         public string $name,
-    ) {}
+    ) {
+    }
 
     public function execute(): Organization
     {

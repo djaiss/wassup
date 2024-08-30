@@ -2,12 +2,9 @@
 
 namespace Tests\Unit\Actions;
 
-use App\Models\Contact;
-use App\Models\User;
-use App\Models\Vault;
 use App\Actions\CreateOrganization;
 use App\Models\Organization;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
