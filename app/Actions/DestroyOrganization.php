@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Models\Member;
 use App\Models\Organization;
-use Illuminate\Support\Str;
 
 class DestroyOrganization
 {

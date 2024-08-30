@@ -16,5 +16,6 @@ class Create extends Component
     }
 
     public function save(): void
-    {}
+    {
+    }
 }
