@@ -7,11 +7,10 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-xl sm:px-0">
-
       @if ($companies->count() > 0)
-      <div class="flex justify-end">
-        <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="my-8">{{ __('Create an organization') }}</x-secondary-button>
-      </div>
+        <div class="flex justify-end">
+          <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="my-8">{{ __('Create an organization') }}</x-secondary-button>
+        </div>
       @endif
 
       <div class="overflow-hidden border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
