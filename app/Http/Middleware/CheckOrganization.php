@@ -22,7 +22,7 @@ class CheckOrganization
         try {
             $member = Member::with('organization')->whereHas('organization', function ($query) use ($slug): void {
                 $query->where('slug', $slug);
-            })->where('user_id', auth()->user()->id)->first();
+            })->where('user_id', auth()->user()->id)->firstOrFail();
 
             $request->attributes->add(['member' => $member]);
             $request->attributes->add(['organization' => $member->organization]);

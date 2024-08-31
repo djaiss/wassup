@@ -25,6 +25,14 @@ class Member extends Model
     ];
 
     /**
+     * The user the member belongs to.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * The organization the member belongs to.
      */
     public function organization(): BelongsTo

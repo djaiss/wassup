@@ -29,6 +29,8 @@ class Create extends Component
             $this->redirectRoute('organizations.show', ['slug' => $organization->slug]);
         } catch (UniqueConstraintViolationException) {
             $this->addError('name', trans('This name can not be taken. Please choose another one.'));
+
+            return;
         }
     }
 }

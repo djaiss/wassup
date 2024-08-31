@@ -12,6 +12,14 @@ class MemberTest extends TestCase
     use DatabaseTransactions;
 
     #[Test]
+    public function it_belongs_to_a_user(): void
+    {
+        $member = Member::factory()->create();
+
+        $this->assertTrue($member->user()->exists());
+    }
+
+    #[Test]
     public function it_belongs_to_an_organization(): void
     {
         $member = Member::factory()->create();
