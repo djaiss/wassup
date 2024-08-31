@@ -12,7 +12,8 @@ class AppLayout extends Component
 {
     public function __construct(
         public ?Organization $organization = null,
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represents the component.
