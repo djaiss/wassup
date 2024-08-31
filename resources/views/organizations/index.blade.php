@@ -1,27 +1,21 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-      {{ __('Dashboard') }}
-    </h2>
-  </x-slot>
-
-  <div class="py-12">
-    <div class="mx-auto max-w-xl sm:px-0">
-      @if ($companies->count() > 0)
+  <div class="py-3 sm:py-12">
+    <div class="mx-auto max-w-xl px-2 sm:px-0">
+      @if ($organizations->count() > 0)
         <div class="flex justify-end">
           <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="my-8">{{ __('Create an organization') }}</x-secondary-button>
         </div>
       @endif
 
-      <div class="overflow-hidden border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-        @forelse ($companies as $company)
+      <div class="overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
+        @forelse ($organizations as $organization)
           <div class="flex items-center justify-between border-b border-gray-200 px-3 py-2 last:border-b-0">
             <div>
-              {{ $company['name'] }}
+              {{ $organization['name'] }}
             </div>
 
             <div>
-              <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="">{{ __('Visit') }}</x-secondary-button>
+              <x-secondary-button hover="true" href="{{ route('organizations.show', ['slug' => $organization['slug']]) }}" class="">{{ __('Visit') }}</x-secondary-button>
             </div>
           </div>
         @empty

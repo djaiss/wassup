@@ -22,9 +22,11 @@ class Create extends Component
         $this->validate();
 
         try {
-            (new CreateOrganization(
+            $organization = (new CreateOrganization(
                 name: $this->name,
             ))->execute();
+
+            $this->redirectRoute('organizations.show', ['slug' => $organization->slug]);
         } catch (UniqueConstraintViolationException) {
             $this->addError('name', trans('This name can not be taken. Please choose another one.'));
         }

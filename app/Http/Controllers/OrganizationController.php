@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {
@@ -14,7 +15,7 @@ class OrganizationController extends Controller
 
     public function index(): View
     {
-        $companies = auth()->user()->members()
+        $organizations = auth()->user()->members()
             ->with('organization')
             ->get()
             ->map(fn (Member $member): array => [
@@ -24,7 +25,18 @@ class OrganizationController extends Controller
             ]);
 
         return view('organizations.index', [
-            'companies' => $companies,
+            'organizations' => $organizations,
+        ]);
+    }
+
+    public function show(Request $request): View
+    {
+        $organization = $request->attributes->get('organization');
+        $member = $request->attributes->get('member');
+
+        return view('organizations.show', [
+            'organization' => $organization,
+            'member' => $member,
         ]);
     }
 }

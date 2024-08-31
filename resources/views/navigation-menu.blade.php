@@ -11,11 +11,13 @@
         </div>
 
         <!-- Navigation Links -->
+        @if ($organization->id > 0)
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
           <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
           </x-nav-link>
         </div>
+        @endif
       </div>
 
       <div class="hidden sm:ms-6 sm:flex sm:items-center">

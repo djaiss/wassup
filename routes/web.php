@@ -16,4 +16,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('organizations', [OrganizationController::class, 'index'])->name('organizations.index');
     Route::get('organizations/new', [OrganizationController::class, 'new'])->name('organizations.new');
+
+    Route::middleware(['organization'])->group(function (): void {
+        Route::get('organizations/{slug}', [OrganizationController::class, 'show'])->name('organizations.show');
+    });
 });
