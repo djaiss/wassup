@@ -16,6 +16,12 @@
             <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
               {{ __('Dashboard') }}
             </x-nav-link>
+
+            @if ($member->permission === 'administrator')
+            <x-nav-link href="{{ route('organizations.settings.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.settings.index')">
+              {{ __('Settings') }}
+            </x-nav-link>
+            @endif
           </div>
         @endif
       </div>

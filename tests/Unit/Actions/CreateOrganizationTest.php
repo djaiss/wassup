@@ -3,6 +3,7 @@
 namespace Tests\Unit\Actions;
 
 use App\Actions\CreateOrganization;
+use App\Enums\Permission;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -49,6 +50,7 @@ class CreateOrganizationTest extends TestCase
         $this->assertDatabaseHas('members', [
             'user_id' => $user->id,
             'organization_id' => $organization->id,
+            'permission' => Permission::Administrator,
         ]);
 
         $this->assertInstanceOf(
