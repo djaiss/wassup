@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Permission;
-use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
