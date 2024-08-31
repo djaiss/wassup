@@ -2,10 +2,8 @@
 
 namespace Tests\Feature\Organizations;
 
-use App\Models\Member;
-use App\Models\User;
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class MemberPermissionTest extends TestCase
