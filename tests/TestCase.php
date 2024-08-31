@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
 use App\Models\User;
@@ -12,8 +13,10 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a member.
      */
-    public function createMember(Organization $organization = null): Member
-    {
+    public function createMember(
+        Organization $organization = null,
+        Permission $permission = Permission::Member
+    ): Member {
         if ($organization === null) {
             $organization = Organization::factory()->create();
         }
@@ -22,6 +25,7 @@ abstract class TestCase extends BaseTestCase
         $member = Member::factory()->create([
             'organization_id' => $organization->id,
             'user_id' => $user->id,
+            'permission' => $permission->value,
         ]);
 
         return $member;

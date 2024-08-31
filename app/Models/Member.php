@@ -22,6 +22,7 @@ class Member extends Model
     protected $fillable = [
         'user_id',
         'organization_id',
+        'permission',
     ];
 
     /**

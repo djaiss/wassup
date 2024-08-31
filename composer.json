@@ -1,7 +1,7 @@
 {
-  "name": "laravel/laravel",
+  "name": "djaiss/wassup",
   "type": "project",
-  "description": "The skeleton application for the Laravel framework.",
+  "description": "All the tools needed to run an organization for remote teams.",
   "keywords": [
     "laravel",
     "framework"

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\Permission;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,6 +24,7 @@ final class MemberFactory extends Factory
         return [
             'user_id' => User::factory(),
             'organization_id' => Organization::factory(),
+            'permission' => Permission::Administrator,
         ];
     }
 }

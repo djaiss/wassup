@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Organizations;
 
+use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
 use App\Models\User;
@@ -41,5 +42,29 @@ class ManageOrganizationTest extends TestCase
             ->assertStatus(200)
             ->assertSee($member->organization->name)
             ->assertSee('Dunder Mifflin UK');
+    }
+
+    #[Test]
+    public function an_administrator_can_access_organization_settings(): void
+    {
+        $member = $this->createMember(permission: Permission::Administrator);
+        $organization = $member->organization;
+
+        $this->actingAs($member->user)
+            ->get(route('organizations.settings.index', ['slug' => $organization->slug]))
+            ->assertStatus(200)
+            ->assertViewIs('organizations.settings.index')
+            ->assertViewHas('organization', $organization)
+            ->assertViewHas('member', $member);
+    }
+
+    #[Test]
+    public function a_regular_member_cannot_access_organization_settings(): void
+    {
+        $member = $this->createMember(permission: Permission::Member);
+        $organization = $member->organization;
+        $this->actingAs($member->user)
+            ->get(route('organizations.settings.index', ['slug' => $organization->slug]))
+            ->assertStatus(403);
     }
 }

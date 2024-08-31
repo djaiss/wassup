@@ -31,7 +31,7 @@
         </div>
       @endif
 
-      @include('navigation-menu')
+      @include('navigation-menu', ['organization' => $organization, 'member' => $member])
 
       <!-- Page Heading -->
       @if (isset($header))

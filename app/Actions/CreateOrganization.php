@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
 use Illuminate\Support\Str;
@@ -38,6 +39,7 @@ class CreateOrganization
         Member::create([
             'user_id' => auth()->user()->id,
             'organization_id' => $this->organization->id,
+            'permission' => Permission::Administrator,
         ]);
     }
 }
