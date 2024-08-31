@@ -1,21 +1,23 @@
 <nav x-data="{ open: false }" class="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
   <!-- Primary Navigation Menu -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-0">
     <div class="flex h-16 justify-between">
       <div class="flex">
         <!-- Logo -->
         <div class="flex shrink-0 items-center">
-          <a href="{{ route('dashboard') }}">
+          <a href="{{ route('organizations.index') }}">
             <x-application-mark class="block h-9 w-auto" />
           </a>
         </div>
 
         <!-- Navigation Links -->
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-          <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
-          </x-nav-link>
-        </div>
+        @if ($organization->id > 0)
+          <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
+              {{ __('Dashboard') }}
+            </x-nav-link>
+          </div>
+        @endif
       </div>
 
       <div class="hidden sm:ms-6 sm:flex sm:items-center">
@@ -138,7 +140,7 @@
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
     <div class="space-y-1 pb-3 pt-2">
-      <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+      <x-responsive-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
         {{ __('Dashboard') }}
       </x-responsive-nav-link>
     </div>

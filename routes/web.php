@@ -2,18 +2,22 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function (): void {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('organizations', [OrganizationController::class, 'index'])->name('organizations.index');
+    Route::get('organizations/new', [OrganizationController::class, 'new'])->name('organizations.new');
+
+    Route::middleware(['organization'])->group(function (): void {
+        Route::get('organizations/{slug}', [OrganizationController::class, 'show'])->name('organizations.show');
+    });
 });

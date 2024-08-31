@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net" />
@@ -21,12 +21,22 @@
     <x-banner />
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-      @livewire('navigation-menu')
+      @if ($organization->id > 0)
+        <div class="bg-stone-950">
+          <div class="mx-auto flex max-w-7xl px-2 py-2 text-sm text-slate-300">
+            <a wire:navigate href="{{ route('organizations.index') }}">{{ __('All organizations') }}</a>
+            <p class="mx-2">/</p>
+            <p>{{ $organization->name }}</p>
+          </div>
+        </div>
+      @endif
+
+      @include('navigation-menu')
 
       <!-- Page Heading -->
       @if (isset($header))
         <header class="bg-white shadow dark:bg-gray-800">
-          <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-7xl px-4 py-6 sm:px-0">
             {{ $header }}
           </div>
         </header>

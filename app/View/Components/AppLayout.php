@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\View\Components;
 
+use App\Models\Organization;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-final class AppLayout extends Component
+class AppLayout extends Component
 {
+    public function __construct(
+        public ?Organization $organization = null,
+    ) {
+    }
+
     /**
      * Get the view / contents that represents the component.
      */
