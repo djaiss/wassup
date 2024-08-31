@@ -2,21 +2,20 @@
 
 namespace Tests\Feature\Livewire\Organizations;
 
-use App\Livewire\CreatePost;
 use App\Livewire\Organizations\Create;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
     use RefreshDatabase;
 
     #[Test]
-    public function the_component_renders()
+    public function the_component_renders(): void
     {
         $user = User::factory()->create();
 
@@ -27,7 +26,7 @@ class CreateTest extends TestCase
     }
 
     #[Test]
-    public function it_creates_an_organization()
+    public function it_creates_an_organization(): void
     {
         $user = User::factory()->create();
 
@@ -41,7 +40,7 @@ class CreateTest extends TestCase
     }
 
     #[Test]
-    public function it_cannot_create_an_organization_with_less_than_three_characters()
+    public function it_cannot_create_an_organization_with_less_than_three_characters(): void
     {
         $user = User::factory()->create();
 
