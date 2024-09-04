@@ -14,7 +14,11 @@
         @if ($organization->id > 0)
           <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
             <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
-              {{ __('Dashboard') }}
+              {{ __('News feed') }}
+            </x-nav-link>
+
+            <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
+              {{ __('People') }}
             </x-nav-link>
 
             @if ($member->permission === 'administrator')

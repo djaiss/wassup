@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OrganizationSettingsController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,6 +22,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::middleware(['organization'])->group(function (): void {
         Route::get('organizations/{slug}', [OrganizationController::class, 'show'])->name('organizations.show');
+
+        Route::get('organizations/{slug}/people', [PeopleController::class, 'index'])->name('members.index');
 
         Route::get('organizations/{slug}/settings', [OrganizationSettingsController::class, 'index'])->name('organizations.settings.index');
     });
