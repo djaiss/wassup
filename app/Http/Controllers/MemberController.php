@@ -6,7 +6,7 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class PeopleController extends Controller
+class MemberController extends Controller
 {
     public function index(Request $request): View
     {
