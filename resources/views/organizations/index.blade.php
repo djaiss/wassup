@@ -2,7 +2,7 @@
   <div class="py-3 sm:py-12">
     <div class="mx-auto max-w-xl px-2 sm:px-0">
       @if ($organizations->count() > 0)
-        <div class="flex justify-end items-center gap-3 my-8">
+        <div class="my-8 flex items-center justify-end gap-3">
           <x-secondary-button hover="true" href="{{ route('organizations.new') }}">{{ __('Create an organization') }}</x-secondary-button>
           <span class="text-gray-500">{{ __('or') }}</span>
           <x-secondary-button hover="true" href="{{ route('organizations.join') }}">{{ __('Join an existing organization') }}</x-secondary-button>
@@ -29,10 +29,10 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-center flex-col">
+          <div class="flex flex-col items-center justify-center">
             <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="mt-4">{{ __('Create an organization') }}</x-secondary-button>
 
-            <span class="text-gray-500 my-5">{{ __('or') }}</span>
+            <span class="my-5 text-gray-500">{{ __('or') }}</span>
 
             <x-secondary-button hover="true" href="{{ route('organizations.join') }}" class="mb-4">{{ __('Join an existing organization') }}</x-secondary-button>
           </div>
