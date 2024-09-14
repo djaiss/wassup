@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('cycles', function (Blueprint $table): void {
+            $table->id();
+            $table->unsignedBigInteger('organization_id')->nullable();
+            $table->integer('cycle_number')->default(1);
+            $table->longText('description')->nullable();
+            $table->datetime('started_at')->nullable();
+            $table->datetime('ended_at')->nullable();
+            $table->boolean('is_public')->default('false');
+            $table->timestamps();
+            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('cycles');
+    }
+};
