@@ -5,7 +5,6 @@ namespace App\Livewire\Organizations;
 use App\Actions\JoinOrganization;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Livewire\Attributes\Validate;
-
 use Livewire\Component;
 
 class Join extends Component

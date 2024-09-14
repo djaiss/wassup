@@ -7,8 +7,6 @@ namespace App\Actions;
 use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Str;
 
 class JoinOrganization
 {

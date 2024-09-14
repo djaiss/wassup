@@ -2,8 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Member;
-use App\Models\Organization;
 use App\Models\Team;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
