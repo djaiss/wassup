@@ -9,12 +9,28 @@
     <div class="mx-auto max-w-7xl px-2 sm:px-0">
       <div class="special-grid grid grid-cols-1 gap-6">
         <!-- left -->
-        <div></div>
+        <div>
+          <div class="rounded-lg flex items-center mb-2">
+            <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+            </svg>
+
+            <span class="ml-2">{{ __('Projects') }}</span>
+          </div>
+          <div class="rounded-lg flex items-center">
+            <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
+            </svg>
+
+            <span class="ml-2">{{ __('Life') }}</span>
+          </div>
+        </div>
 
         <!-- center -->
         <div>
           <!-- post input -->
-          <div class="overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800 mb-3">
+          <div class="mb-3 overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
             <div class="flex items-center px-4 py-2">
               <img class="mr-2 h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
 
@@ -24,7 +40,7 @@
 
           <!-- filters -->
           <div class="rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-            <div class="mx-2 my-1 bg-gray-100 text-muted-foreground inline-flex h-9 items-center justify-center rounded-lg p-1">
+            <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
               <di class="bg-white">
                 <input type="radio" :name="name" x-model="__selected" id="all" value="all" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" checked="checked" />
 
@@ -39,9 +55,7 @@
           </div>
 
           <!-- posts -->
-          <div>
-
-          </div>
+          <div></div>
         </div>
 
         <!-- right -->

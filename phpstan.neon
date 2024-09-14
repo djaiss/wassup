@@ -12,3 +12,6 @@ parameters:
         - bootstrap
         - database/factories
         - routes
+
+    ignoreErrors:
+        - '#Access to an undefined property App\\Models\\User::\$profile_photo_url#'

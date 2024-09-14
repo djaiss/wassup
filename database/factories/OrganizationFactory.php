@@ -21,6 +21,7 @@ final class OrganizationFactory extends Factory
         return [
             'name' => 'Dunder Mifflin',
             'slug' => $this->faker->slug,
+            'code' => $this->faker->word,
         ];
     }
 }

@@ -17,7 +17,7 @@
               {{ __('News feed') }}
             </x-nav-link>
 
-            <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
+            <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('dashboard')">
               {{ __('People') }}
             </x-nav-link>
 

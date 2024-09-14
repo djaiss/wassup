@@ -57,5 +57,7 @@ class CreateOrganizationTest extends TestCase
             Organization::class,
             $organization
         );
+
+        $this->assertMatchesRegularExpression('/^[A-Z1-9]{14}$/', $organization->code);
     }
 }
