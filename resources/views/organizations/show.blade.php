@@ -7,27 +7,26 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl px-2 sm:px-4">
-
       <div class="flex justify-center">
         <div class="rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-            <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
-              <div class="bg-white">
-                <input type="radio" :name="name" x-model="__selected" id="all" value="all" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" checked="checked" />
+          <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
+            <div class="bg-white">
+              <input type="radio" :name="name" x-model="__selected" id="all" value="all" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" checked="checked" />
 
-                <label for="all" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="all">Cycle</label>
-              </div>
-              <div class="bg-white">
-                <input type="radio" :name="name" x-model="__selected" id="all" value="all" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" checked="checked" />
+              <label for="all" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="all">Cycle</label>
+            </div>
+            <div class="bg-white">
+              <input type="radio" :name="name" x-model="__selected" id="all" value="all" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" checked="checked" />
 
-<label for="unread" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="unread">Goals</label>
-              </div>
-              <div>
-                <input type="radio" :name="name" x-model="__selected" id="unread" value="unread" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" />
+              <label for="unread" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="unread">Goals</label>
+            </div>
+            <div>
+              <input type="radio" :name="name" x-model="__selected" id="unread" value="unread" class="border-primary text-primary focus-visible:ring-ring peer sr-only aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" name="mail-filter" />
 
-                <label for="unread" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="unread">Check-ins</label>
-              </div>
+              <label for="unread" class="ring-offset-background peer-focus-visible:ring-ring peer-checked:bg-background peer-checked:text-foreground inline-flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 peer-checked:shadow peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70" id="unread">Check-ins</label>
             </div>
           </div>
+        </div>
       </div>
 
       <div class="special-grid grid grid-cols-1 gap-6">

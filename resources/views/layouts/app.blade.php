@@ -23,7 +23,7 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
       @if ($organization->id > 0)
         <div class="bg-stone-950">
-          <div class="mx-auto flex max-w-7xl px-4 sm:px-4 py-2 text-sm text-slate-300">
+          <div class="mx-auto flex max-w-7xl px-4 py-2 text-sm text-slate-300 sm:px-4">
             <a wire:navigate href="{{ route('organizations.index') }}">{{ __('All organizations') }}</a>
             <p class="mx-2">/</p>
             <p>{{ $organization->name }}</p>
