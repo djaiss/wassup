@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('cycles', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('organization_id')->nullable();
-            $table->integer('cycle_number')->default(1);
             $table->longText('description')->nullable();
             $table->datetime('started_at')->nullable();
             $table->datetime('ended_at')->nullable();

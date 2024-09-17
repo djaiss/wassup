@@ -21,7 +21,6 @@ class Cycle extends Model
      */
     protected $fillable = [
         'organization_id',
-        'cycle_number',
         'description',
         'started_at',
         'ended_at',

@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
   <!-- Primary Navigation Menu -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-0">
+  <div class="mx-auto max-w-7xl px-4 sm:px-4">
     <div class="flex h-16 justify-between">
       <div class="flex">
         <!-- Logo -->
@@ -13,11 +13,11 @@
         <!-- Navigation Links -->
         @if ($organization->id > 0)
           <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-            <x-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
+            <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show')">
               {{ __('News feed') }}
             </x-nav-link>
 
-            <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('dashboard')">
+            <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.people.index')">
               {{ __('People') }}
             </x-nav-link>
 
@@ -139,8 +139,8 @@
       <div class="-me-2 flex items-center sm:hidden">
         <button @click="open = ! open" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none dark:text-gray-500 dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:focus:bg-gray-900 dark:focus:text-gray-400">
           <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -148,7 +148,7 @@
   </div>
 
   <!-- Responsive Navigation Menu -->
-  <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+  <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
     <div class="space-y-1 pb-3 pt-2">
       <x-responsive-nav-link href="{{ route('organizations.index') }}" :active="request()->routeIs('dashboard')">
         {{ __('Dashboard') }}

@@ -21,7 +21,6 @@ final class CycleFactory extends Factory
     {
         return [
             'organization_id' => Organization::factory(),
-            'cycle_number' => 1,
             'description' => $this->faker->sentence(),
             'started_at' => $this->faker->date(),
             'ended_at' => $this->faker->date(),
