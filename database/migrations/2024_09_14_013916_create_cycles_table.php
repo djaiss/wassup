@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->datetime('started_at')->nullable();
             $table->datetime('ended_at')->nullable();
-            $table->boolean('is_public')->default('false');
+            $table->boolean('is_public')->default(false);
             $table->timestamps();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
         });
