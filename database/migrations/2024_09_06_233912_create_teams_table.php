@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('organization_id')->nullable();
             $table->string('name');
-            $table->boolean('is_public')->default('true');
+            $table->boolean('is_public')->default(true);
             $table->timestamps();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
         });
