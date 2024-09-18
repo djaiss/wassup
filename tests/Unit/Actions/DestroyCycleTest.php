@@ -4,7 +4,6 @@ namespace Tests\Unit\Actions;
 
 use App\Actions\DestroyCycle;
 use App\Models\Cycle;
-use App\Models\Organization;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
