@@ -1,9 +1,8 @@
 <x-app-layout :organization="$organization" :member="$member">
   <div class="py-12">
     <div class="mx-auto max-w-5xl px-2 sm:px-4">
-
       <!-- cycle selector -->
-      <div class="grid grid-cols-3 mb-8">
+      <div class="mb-8 grid grid-cols-3">
         <!-- previous cycles -->
         <div class="flex items-center">
           <div class="mr-2 rounded-full border bg-white p-3">
@@ -20,14 +19,14 @@
 
         <!-- draft new cycle -->
         <div class="place-self-center">
-        <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
-          {{ __('Draft new cycle') }}
-        </x-secondary-button>
+          <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
+            {{ __('Draft new cycle') }}
+          </x-secondary-button>
         </div>
 
         <!-- next cycles -->
-        <div class="place-self-end flex items-center">
-          <div class="flex flex-col mr-2">
+        <div class="flex items-center place-self-end">
+          <div class="mr-2 flex flex-col">
             <p class="text-sm">{{ __('Next cycle') }}</p>
             <p class="text-xs text-gray-600">Cycle #32</p>
           </div>
@@ -132,7 +131,7 @@
         </div>
 
         <!-- cycle selector -->
-        <div class="grid grid-cols-3 mb-8">
+        <div class="mb-8 grid grid-cols-3">
           <!-- previous cycles -->
           <div class="flex items-center">
             <div class="mr-2 rounded-full border bg-white p-3">
@@ -149,14 +148,14 @@
 
           <!-- draft new cycle -->
           <div class="place-self-center">
-          <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
-            {{ __('Draft new cycle') }}
-          </x-secondary-button>
+            <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
+              {{ __('Draft new cycle') }}
+            </x-secondary-button>
           </div>
 
           <!-- next cycles -->
-          <div class="place-self-end flex items-center">
-            <div class="flex flex-col mr-2">
+          <div class="flex items-center place-self-end">
+            <div class="mr-2 flex flex-col">
               <p class="text-sm">{{ __('Previous cycle') }}</p>
               <p class="text-xs text-gray-600">Cycle #32</p>
             </div>
