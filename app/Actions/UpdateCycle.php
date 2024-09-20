@@ -12,6 +12,7 @@ class UpdateCycle
     public function __construct(
         public Cycle $cycle,
         public string $description,
+        public int $number,
         public Carbon $startedAt,
         public Carbon $endedAt,
         public bool $isPublic,
@@ -29,6 +30,7 @@ class UpdateCycle
     {
         $this->cycle->update([
             'description' => $this->description,
+            'number' => $this->number,
             'started_at' => $this->startedAt->toDateString(),
             'ended_at' => $this->endedAt->toDateString(),
             'is_public' => $this->isPublic,

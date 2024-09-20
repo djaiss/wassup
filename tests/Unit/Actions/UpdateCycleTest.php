@@ -22,6 +22,7 @@ class UpdateCycleTest extends TestCase
 
         $cycle = (new UpdateCycle(
             cycle: $cycle,
+            number: 1,
             description: 'Cycle 1',
             startedAt: now(),
             endedAt: now()->addDays(7),
@@ -31,6 +32,7 @@ class UpdateCycleTest extends TestCase
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
             'organization_id' => $cycle->organization->id,
+            'number' => 1,
             'description' => 'Cycle 1',
             'started_at' => '2018-01-01 00:00:00',
             'ended_at' => '2018-01-08 00:00:00',

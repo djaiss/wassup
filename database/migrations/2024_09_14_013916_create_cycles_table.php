@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('cycles', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('organization_id')->nullable();
+            $table->integer('number')->nullable();
             $table->longText('description')->nullable();
             $table->datetime('started_at')->nullable();
             $table->datetime('ended_at')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->boolean('is_public')->default(false);
             $table->timestamps();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');

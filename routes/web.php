@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CycleController;
 use App\Http\Controllers\JoinOrganizationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OrganizationSettingsController;
@@ -23,6 +24,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::middleware(['organization'])->group(function (): void {
         Route::get('organizations/{slug}', [OrganizationController::class, 'show'])->name('organizations.show');
+
+        // cycles
+        Route::get('organizations/{slug}/cycles/new', [CycleController::class, 'new'])->name('organizations.cycles.new');
 
         Route::get('organizations/{slug}/people', [PeopleController::class, 'index'])->name('organizations.people.index');
 

@@ -14,9 +14,11 @@ class CreateCycle
 
     public function __construct(
         public Organization $organization,
+        public int $number,
         public string $description,
         public Carbon $startedAt,
         public Carbon $endedAt,
+        public bool $isActive,
         public bool $isPublic,
     ) {
     }
@@ -32,9 +34,11 @@ class CreateCycle
     {
         $this->cycle = Cycle::create([
             'organization_id' => $this->organization->id,
+            'number' => $this->number,
             'description' => $this->description,
             'started_at' => $this->startedAt->toDateString(),
             'ended_at' => $this->endedAt->toDateString(),
+            'is_active' => $this->isActive,
             'is_public' => $this->isPublic,
         ]);
     }

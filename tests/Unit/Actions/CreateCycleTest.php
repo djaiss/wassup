@@ -21,18 +21,22 @@ class CreateCycleTest extends TestCase
 
         $cycle = (new CreateCycle(
             organization: $organization = Organization::factory()->create(),
+            number: 1,
             description: 'Cycle 1',
             startedAt: now(),
             endedAt: now()->addDays(7),
+            isActive: false,
             isPublic: true,
         ))->execute();
 
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
             'organization_id' => $organization->id,
+            'number' => 1,
             'description' => 'Cycle 1',
             'started_at' => '2018-01-01 00:00:00',
             'ended_at' => '2018-01-08 00:00:00',
+            'is_active' => 0,
             'is_public' => 1,
         ]);
 

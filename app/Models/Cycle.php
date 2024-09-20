@@ -21,9 +21,11 @@ class Cycle extends Model
      */
     protected $fillable = [
         'organization_id',
+        'number',
         'description',
         'started_at',
         'ended_at',
+        'is_active',
         'is_public',
     ];
 
@@ -43,6 +45,7 @@ class Cycle extends Model
     protected function casts(): array
     {
         return [
+            'is_active' => 'boolean',
             'is_public' => 'boolean',
             'started_at' => 'datetime',
             'ended_at' => 'datetime',
