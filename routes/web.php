@@ -29,6 +29,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('organizations/{slug}/cycles/new', [CycleController::class, 'new'])->name('organizations.cycles.new');
         Route::middleware(['cycle'])->group(function (): void {
             Route::get('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'show'])->name('organizations.cycles.show');
+            Route::get('organizations/{slug}/cycles/{cycle}/delete', [CycleController::class, 'delete'])->name('organizations.cycles.delete');
+            Route::delete('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'destroy'])->name('organizations.cycles.destroy');
         });
 
         Route::get('organizations/{slug}/people', [PeopleController::class, 'index'])->name('organizations.people.index');
