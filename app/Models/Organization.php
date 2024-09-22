@@ -22,6 +22,7 @@ class Organization extends Model
     protected $fillable = [
         'name',
         'slug',
+        'code',
     ];
 
     /**
@@ -30,6 +31,14 @@ class Organization extends Model
     public function members(): HasMany
     {
         return $this->hasMany(Member::class);
+    }
+
+    /**
+     * The cycles the organization has.
+     */
+    public function cycles(): HasMany
+    {
+        return $this->hasMany(Cycle::class);
     }
 
     /**

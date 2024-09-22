@@ -31,7 +31,24 @@ class CreateOrganization
         $this->organization = Organization::create([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
+            'code' => $this->generateUniqueCode(),
         ]);
+    }
+
+    private function generateUniqueCode(): string
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+        $length = 14;
+        $code = '';
+
+        do {
+            $code = '';
+            for ($i = 0; $i < $length; $i++) {
+                $code .= $characters[random_int(0, strlen($characters) - 1)];
+            }
+        } while (Organization::where('code', $code)->exists());
+
+        return $code;
     }
 
     private function createMember(): void
