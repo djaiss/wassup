@@ -18,4 +18,15 @@ class CycleTest extends TestCase
 
         $this->assertTrue($cycle->organization()->exists());
     }
+
+    #[Test]
+    public function it_gets_markdown_description(): void
+    {
+        $cycle = Cycle::factory()->create([
+            'description' => 'This is a **bold** description.',
+        ]);
+
+        $this->assertEquals('<p>This is a <strong>bold</strong> description.</p>
+', $cycle->getMarkdownDescription());
+    }
 }

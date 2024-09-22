@@ -16,8 +16,8 @@ class CreateCycle
         public Organization $organization,
         public int $number,
         public string $description,
-        public Carbon $startedAt,
-        public Carbon $endedAt,
+        public ?Carbon $startedAt,
+        public ?Carbon $endedAt,
         public bool $isActive,
         public bool $isPublic,
     ) {

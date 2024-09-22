@@ -34,6 +34,14 @@ class Organization extends Model
     }
 
     /**
+     * The cycles the organization has.
+     */
+    public function cycles(): HasMany
+    {
+        return $this->hasMany(Cycle::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
