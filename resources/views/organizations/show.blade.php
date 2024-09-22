@@ -141,7 +141,7 @@
               </div>
 
               <div class="flex items-center">
-                <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
+                <x-secondary-button hover="true" href="{{ route('organizations.cycles.edit', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
                   {{ __('Edit') }}
                 </x-secondary-button>
               </div>
