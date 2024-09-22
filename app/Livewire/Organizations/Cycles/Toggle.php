@@ -4,8 +4,8 @@ namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\ToggleCycle;
 use App\Models\Cycle;
-use Livewire\Component;
 use Livewire\Attributes\Locked;
+use Livewire\Component;
 
 class Toggle extends Component
 {

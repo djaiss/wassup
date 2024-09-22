@@ -6,7 +6,6 @@ use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Str;
 
 class OrganizationController extends Controller
 {

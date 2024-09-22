@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Actions;
 
 use App\Models\Cycle;
-use Carbon\Carbon;
 
 class ToggleCycle
 {
@@ -24,7 +23,7 @@ class ToggleCycle
 
     private function toggle(): void
     {
-        $this->cycle->is_active = !$this->cycle->is_active;
+        $this->cycle->is_active = ! $this->cycle->is_active;
         $this->cycle->save();
     }
 

@@ -2,10 +2,7 @@
 
 namespace App\Http\ViewModels;
 
-use App\Cache\TeamUsersCache;
 use App\Models\Cycle;
-use App\Models\Team;
-use Illuminate\Support\Str;
 
 class CycleViewModel
 {

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use App\Models\Cycle;
-use App\Models\Member;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
