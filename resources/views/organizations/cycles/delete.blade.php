@@ -11,19 +11,17 @@
             <p class="text-gray-500 dark:text-gray-400">{{ __('This will delete everything in this cycle, including goals and check-ins.') }}</p>
           </div>
 
+          <div class="flex justify-between p-5">
+            <x-secondary-button hover="true" href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
+              {{ __('Cancel') }}
+            </x-secondary-button>
 
-            <div class="flex justify-between p-5">
-              <x-secondary-button hover="true" href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
-                {{ __('Cancel') }}
-              </x-secondary-button>
-
-              <x-button>
-                {{ __('Delete') }}
-              </x-button>
-            </div>
+            <x-button>
+              {{ __('Delete') }}
+            </x-button>
+          </div>
         </form>
       </div>
-
     </div>
   </div>
 </x-app-layout>

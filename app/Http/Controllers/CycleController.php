@@ -56,7 +56,7 @@ class CycleController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         $organization = $request->attributes->get('organization');
-        $member = $request->attributes->get('member');
+        $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
         (new DestroyCycle(

@@ -142,8 +142,8 @@
 
               <div class="flex items-center">
                 <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
-          {{ __('Edit') }}
-        </x-secondary-button>
+                  {{ __('Edit') }}
+                </x-secondary-button>
               </div>
             </div>
 
@@ -192,7 +192,7 @@
   <div class="mb-3 overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
   <div class="flex items-center px-4 py-2">
   <img class="mr-2 h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-
+  
   <input type="text" class="w-full rounded-lg border-none bg-gray-100 focus:ring-0" placeholder="What's on your mind?" />
   </div>
   </div>
