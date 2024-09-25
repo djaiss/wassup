@@ -16,7 +16,7 @@
 
     <div class="p-6">
       <x-label for="description" :value="__('Tell your team what this cycle is going to be about')" class="mb-1" />
-      <x-textarea wire:model="description" id="description" class="min-h-[400px] w-full" required />
+      <x-textarea wire:model="description" id="description" class="min-h-[600px] w-full" required />
       <p class="mt-1 text-xs text-gray-600">{{ __('This editor supports markdown.') }}</p>
       <x-input-error for="description" class="mt-2" />
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cache\CycleCache;
 use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
@@ -43,7 +44,10 @@ class OrganizationController extends Controller
             ->first();
 
         if ($cycle) {
-            $data = CycleViewModel::show($cycle);
+            $data = CycleCache::make(
+                organization: $organization,
+                cycle: $cycle
+            )->value();
         }
 
         return view('organizations.show', [

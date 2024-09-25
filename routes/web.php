@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\CycleController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\JoinOrganizationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OrganizationSettingsController;
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('organizations/{slug}/cycles/new', [CycleController::class, 'new'])->name('organizations.cycles.new');
         Route::middleware(['cycle'])->group(function (): void {
             Route::get('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'show'])->name('organizations.cycles.show');
+            Route::get('organizations/{slug}/cycles/{cycle}/goals', [GoalController::class, 'index'])->name('goals.index');
             Route::get('organizations/{slug}/cycles/{cycle}/edit', [CycleController::class, 'edit'])->name('organizations.cycles.edit');
             Route::put('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'update'])->name('organizations.cycles.update');
             Route::get('organizations/{slug}/cycles/{cycle}/delete', [CycleController::class, 'delete'])->name('organizations.cycles.delete');
