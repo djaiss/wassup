@@ -4,11 +4,9 @@ namespace App\Cache;
 
 use App\Helpers\CacheHelper;
 use App\Http\ViewModels\CycleViewModel;
-use App\Http\ViewModels\Vaults\Contacts\ContactViewModel;
 use App\Models\Contact;
 use App\Models\Cycle;
 use App\Models\Organization;
-use App\Models\User;
 use App\Traits\CacheIdentifier;
 
 /**
@@ -26,7 +24,7 @@ final class CycleCache extends CacheHelper
         protected readonly Organization $organization,
         protected readonly Cycle $cycle,
     ) {
-        $this->identifier = $organization->id.'_'.$cycle->id;
+        $this->identifier = $organization->id . '_' . $cycle->id;
     }
 
     public static function make(Organization $organization, Cycle $cycle): static

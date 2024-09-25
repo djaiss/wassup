@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Cache\CycleCache;
-use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
