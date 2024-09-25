@@ -3,6 +3,8 @@
 namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\CreateCycle;
+use App\Jobs\RefreshCycleCache;
+use App\Models\Cycle;
 use App\Models\Organization;
 use Carbon\Carbon;
 use Livewire\Attributes\Locked;
@@ -45,6 +47,8 @@ class Create extends Component
             isActive: false,
             isPublic: false,
         ))->execute();
+
+        RefreshCycleCache::dispatch($this->organization);
 
         $this->redirectRoute('organizations.cycles.show', [
             'slug' => $this->organization->slug,

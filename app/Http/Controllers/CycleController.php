@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\DestroyCycle;
 use App\Actions\UpdateCycle;
-use App\Http\ViewModels\CycleViewModel;
+use App\Cache\CycleCache;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -30,7 +30,10 @@ class CycleController extends Controller
         $member = $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
-        $data = CycleViewModel::show($cycle);
+        $data = CycleCache::make(
+            organization: $organization,
+            cycle: $cycle
+        )->value();
 
         return view('organizations.show', [
             'organization' => $organization,
@@ -59,7 +62,7 @@ class CycleController extends Controller
         $organization = $request->attributes->get('organization');
         $cycle = $request->attributes->get('cycle');
 
-        (new UpdateCycle(
+        $cycle = (new UpdateCycle(
             cycle: $cycle,
             description: $request->input('description'),
             number: $cycle->number,
@@ -67,6 +70,11 @@ class CycleController extends Controller
             endedAt: $cycle->ended_at,
             isPublic: $cycle->is_public,
         ))->execute();
+
+        CycleCache::make(
+            organization: $organization,
+            cycle: $cycle,
+        )->refresh();
 
         return redirect()->route('organizations.cycles.show', [
             'slug' => $organization->slug,
@@ -95,6 +103,11 @@ class CycleController extends Controller
         (new DestroyCycle(
             cycle: $cycle,
         ))->execute();
+
+        CycleCache::make(
+            organization: $organization,
+            cycle: $cycle,
+        )->forget();
 
         return redirect()->route('organizations.show', [
             'slug' => $organization->slug,
