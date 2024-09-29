@@ -1221,16 +1221,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.24.0",
+            "version": "v11.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "557da2b02e298acbd12b3fb7d04d16ea253c5f20"
+                "reference": "b487a9089c0b1c71ac63bb6bc44fb4b00dc6da2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/557da2b02e298acbd12b3fb7d04d16ea253c5f20",
-                "reference": "557da2b02e298acbd12b3fb7d04d16ea253c5f20",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b487a9089c0b1c71ac63bb6bc44fb4b00dc6da2e",
+                "reference": "b487a9089c0b1c71ac63bb6bc44fb4b00dc6da2e",
                 "shasum": ""
             },
             "require": {
@@ -1426,7 +1426,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-09-24T14:46:11+00:00"
+            "time": "2024-09-26T11:21:58+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -1934,16 +1934,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.28.0",
+            "version": "3.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "e611adab2b1ae2e3072fa72d62c62f52c2bf1f0c"
+                "reference": "0adc0d9a51852e170e0028a60bd271726626d3f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e611adab2b1ae2e3072fa72d62c62f52c2bf1f0c",
-                "reference": "e611adab2b1ae2e3072fa72d62c62f52c2bf1f0c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0adc0d9a51852e170e0028a60bd271726626d3f0",
+                "reference": "0adc0d9a51852e170e0028a60bd271726626d3f0",
                 "shasum": ""
             },
             "require": {
@@ -2011,22 +2011,22 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.28.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.29.0"
             },
-            "time": "2024-05-22T10:09:12+00:00"
+            "time": "2024-09-29T11:59:11+00:00"
         },
         {
             "name": "league/flysystem-local",
-            "version": "3.28.0",
+            "version": "3.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-local.git",
-                "reference": "13f22ea8be526ea58c2ddff9e158ef7c296e4f40"
+                "reference": "e0e8d52ce4b2ed154148453d321e97c8e931bd27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/13f22ea8be526ea58c2ddff9e158ef7c296e4f40",
-                "reference": "13f22ea8be526ea58c2ddff9e158ef7c296e4f40",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/e0e8d52ce4b2ed154148453d321e97c8e931bd27",
+                "reference": "e0e8d52ce4b2ed154148453d321e97c8e931bd27",
                 "shasum": ""
             },
             "require": {
@@ -2060,9 +2060,9 @@
                 "local"
             ],
             "support": {
-                "source": "https://github.com/thephpleague/flysystem-local/tree/3.28.0"
+                "source": "https://github.com/thephpleague/flysystem-local/tree/3.29.0"
             },
-            "time": "2024-05-06T20:05:52+00:00"
+            "time": "2024-08-09T21:24:39+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -6317,26 +6317,26 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.15.4",
+            "version": "2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "a139776fa3f5985a50b509f2a02ff0f709d2a546"
+                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/a139776fa3f5985a50b509f2a02ff0f709d2a546",
-                "reference": "a139776fa3f5985a50b509f2a02ff0f709d2a546",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/befcdc0e5dce67252aa6322d82424be928214fa2",
+                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0 || ^8.0",
+                "php": "^7.1 || ^8.0",
                 "psr/log": "^1.0.1 || ^2.0 || ^3.0"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9 || ^1.0",
-                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.3",
-                "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0 || ^5.0"
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.5.20 || ^8.5.8 || ^9.3.3",
+                "symfony/var-dumper": "^4.0 || ^5.0"
             },
             "suggest": {
                 "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
@@ -6376,7 +6376,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.15.4"
+                "source": "https://github.com/filp/whoops/tree/2.16.0"
             },
             "funding": [
                 {
@@ -6384,7 +6384,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-03T12:00:00+00:00"
+            "time": "2024-09-25T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -7183,16 +7183,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.4",
+            "version": "1.12.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ffa517cb918591b93acc9b95c0bebdcd0e4538bd"
+                "reference": "7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ffa517cb918591b93acc9b95c0bebdcd0e4538bd",
-                "reference": "ffa517cb918591b93acc9b95c0bebdcd0e4538bd",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17",
+                "reference": "7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17",
                 "shasum": ""
             },
             "require": {
@@ -7237,7 +7237,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-19T07:58:01+00:00"
+            "time": "2024-09-26T12:45:22+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

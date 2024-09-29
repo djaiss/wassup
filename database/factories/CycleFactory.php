@@ -25,6 +25,7 @@ final class CycleFactory extends Factory
             'started_at' => $this->faker->date(),
             'ended_at' => $this->faker->date(),
             'is_public' => $this->faker->boolean(),
+            'is_active' => $this->faker->boolean(),
         ];
     }
 }

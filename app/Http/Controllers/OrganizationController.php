@@ -34,6 +34,7 @@ class OrganizationController extends Controller
     {
         $organization = $request->attributes->get('organization');
         $member = $request->attributes->get('member');
+        $data = [];
 
         // get the latest cycle that is active
         // if there are no active cycles, get the latest one
@@ -47,6 +48,10 @@ class OrganizationController extends Controller
                 organization: $organization,
                 cycle: $cycle
             )->value();
+        } else {
+            $cycle = $organization->cycles()
+                ->orderBy('number', 'desc')
+                ->first();
         }
 
         return view('organizations.show', [

@@ -4,13 +4,12 @@ namespace App\Cache;
 
 use App\Helpers\CacheHelper;
 use App\Http\ViewModels\CycleViewModel;
-use App\Models\Contact;
 use App\Models\Cycle;
 use App\Models\Organization;
 use App\Traits\CacheIdentifier;
 
 /**
- * All the information about a contact: name, job info, background info.
+ * All the information about a cycle, including previous and next cycles.
  */
 final class CycleCache extends CacheHelper
 {
