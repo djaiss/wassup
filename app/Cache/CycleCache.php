@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Traits\CacheIdentifier;
 
 /**
- * All the information about a contact: name, job info, background info.
+ * All the information about a cycle, including previous and next cycles.
  */
 final class CycleCache extends CacheHelper
 {
