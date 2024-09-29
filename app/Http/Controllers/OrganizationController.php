@@ -34,6 +34,7 @@ class OrganizationController extends Controller
     {
         $organization = $request->attributes->get('organization');
         $member = $request->attributes->get('member');
+        $data = [];
 
         // get the latest cycle that is active
         // if there are no active cycles, get the latest one
@@ -42,7 +43,6 @@ class OrganizationController extends Controller
             ->orderBy('number', 'desc')
             ->first();
 
-        $data = [];
         if ($cycle) {
             $data = CycleCache::make(
                 organization: $organization,
