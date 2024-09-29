@@ -20,7 +20,7 @@ abstract class CacheHelper
         return Cache::remember(
             $this->getKey(),
             $this->ttl,
-            fn(): mixed => $this->generate()
+            fn (): mixed => $this->generate()
         );
     }
 

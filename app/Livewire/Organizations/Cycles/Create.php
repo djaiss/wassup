@@ -3,7 +3,6 @@
 namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\CreateCycle;
-use App\Cache\CycleCache;
 use App\Jobs\RefreshCycleCache;
 use App\Models\Cycle;
 use App\Models\Organization;

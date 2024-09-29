@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use App\Actions\DestroyCycle;
 use App\Actions\UpdateCycle;
 use App\Cache\CycleCache;
-use App\Http\ViewModels\CycleViewModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
