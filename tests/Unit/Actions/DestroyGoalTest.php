@@ -3,7 +3,6 @@
 namespace Tests\Unit\Actions;
 
 use App\Actions\DestroyGoal;
-use App\Models\Cycle;
 use App\Models\Goal;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

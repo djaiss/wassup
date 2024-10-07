@@ -6,8 +6,6 @@ namespace App\Actions;
 
 use App\Models\Cycle;
 use App\Models\Goal;
-use App\Models\Organization;
-use Carbon\Carbon;
 
 class CreateGoal
 {

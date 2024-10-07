@@ -3,9 +3,7 @@
 namespace Tests\Unit\Actions;
 
 use App\Actions\UpdateGoal;
-use App\Models\Cycle;
 use App\Models\Goal;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;

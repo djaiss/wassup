@@ -2,11 +2,6 @@
 
 namespace Tests\Feature\Organizations;
 
-use App\Enums\Permission;
-use App\Models\Cycle;
-use App\Models\Member;
-use App\Models\Organization;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -21,7 +16,7 @@ class ManageCycleTest extends TestCase
         $member = $this->createMember();
 
         $this->actingAs($member->user)
-            ->get('/organizations/'.$member->organization->slug)
+            ->get('/organizations/' . $member->organization->slug)
             ->assertStatus(200)
             ->assertSee('It\'s time to create your first cycle.');
     }

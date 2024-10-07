@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Models\Cycle;
 use App\Models\Goal;
-use Carbon\Carbon;
 
 class UpdateGoal
 {
