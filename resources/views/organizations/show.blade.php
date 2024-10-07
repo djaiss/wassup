@@ -2,48 +2,6 @@
   <div class="py-12">
     <div class="mx-auto max-w-5xl px-2 sm:px-4">
       @if ($cycle)
-        <!-- cycle selector -->
-        <div class="mb-8 grid grid-cols-1 sm:grid-cols-3">
-          <!-- previous cycle -->
-          <div class="flex items-center">
-            @if ($previousCycle)
-              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $previousCycle->number]) }}" wire:navigate.hover class="mr-2 rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                </svg>
-              </a>
-
-              <div class="flex flex-col">
-                <p class="text-sm">{{ __('Previous cycle') }}</p>
-                <p class="text-xs text-gray-600">Cycle #{{ $previousCycle->number }}</p>
-              </div>
-            @endif
-          </div>
-
-          <!-- draft new cycle -->
-          <div class="place-self-center">
-            <x-secondary-button hover="true" href="{{ route('organizations.cycles.new', ['slug' => $organization->slug]) }}">
-              {{ __('Draft new cycle') }}
-            </x-secondary-button>
-          </div>
-
-          <!-- next cycle -->
-          <div class="flex items-center place-self-end">
-            @if ($nextCycle)
-              <div class="mr-2 flex flex-col">
-                <p class="text-sm">{{ __('Next cycle') }}</p>
-                <p class="text-xs text-gray-600">Cycle #{{ $nextCycle->number }}</p>
-              </div>
-
-              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $nextCycle->number]) }}" wire:navigate.hover class="rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-              </a>
-            @endif
-          </div>
-        </div>
-
         <!-- cycle title -->
         <div class="mb-6 flex justify-between">
           <h2 class="text-xl font-bold">Cycle #{{ $cycle->number }}</h2>
@@ -78,14 +36,19 @@
           @endif
         </div>
 
+        <!-- cycle tab: description, goals, check-ins -->
         <div class="mb-8 flex justify-center">
           <div class="rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-            <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">sdfs</div>
+            <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
+              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle]) }}" class="rounded-l-md bg-white px-3 py-1 text-sm font-medium shadow-sm hover:bg-white">{{ __('Description') }}</a>
+              <a href="{{ route('goals.index', ['slug' => $organization->slug, 'cycle' => $cycle]) }}" wire:navigate.hover class="px-3 py-1 text-sm hover:bg-white hover:shadow-sm">{{ __('Goals') }}</a>
+              <a href="" class="rounded-r-md px-3 py-1 text-sm hover:bg-white hover:shadow-sm">{{ __('Check-ins') }}</a>
+            </div>
           </div>
         </div>
 
         <!-- cycle description -->
-        <div class="mb-5 rounded-md border border-gray-200 bg-white sm:rounded-lg">
+        <div class="mb-8 rounded-md border border-gray-200 bg-white sm:rounded-lg">
           <div class="prose mx-auto px-4 py-8">
             {!! $cycle->getMarkdownDescription() !!}
           </div>
@@ -152,6 +115,48 @@
             </div>
           </div>
         </div>
+
+        <!-- cycle selector -->
+        <div class="grid grid-cols-1 sm:grid-cols-3">
+          <!-- previous cycle -->
+          <div class="flex items-center">
+            @if ($previousCycle)
+              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $previousCycle->number]) }}" wire:navigate.hover class="mr-2 rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+              </a>
+
+              <div class="flex flex-col">
+                <p class="text-sm">{{ __('Previous cycle') }}</p>
+                <p class="text-xs text-gray-600">Cycle #{{ $previousCycle->number }}</p>
+              </div>
+            @endif
+          </div>
+
+          <!-- draft new cycle -->
+          <div class="place-self-center">
+            <x-secondary-button hover="true" href="{{ route('organizations.cycles.new', ['slug' => $organization->slug]) }}">
+              {{ __('Draft new cycle') }}
+            </x-secondary-button>
+          </div>
+
+          <!-- next cycle -->
+          <div class="flex items-center place-self-end">
+            @if ($nextCycle)
+              <div class="mr-2 flex flex-col">
+                <p class="text-sm">{{ __('Next cycle') }}</p>
+                <p class="text-xs text-gray-600">Cycle #{{ $nextCycle->number }}</p>
+              </div>
+
+              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $nextCycle->number]) }}" wire:navigate.hover class="rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            @endif
+          </div>
+        </div>
       @else
         <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-10">
           <img src="/img/cycle-blank.png" class="mb-10 w-20" />
@@ -170,14 +175,3 @@
     </div>
   </div>
 </x-app-layout>
-
-<!-- post input -->
-{{--
-  <div class="mb-3 overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-  <div class="flex items-center px-4 py-2">
-  <img class="mr-2 h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-  
-  <input type="text" class="w-full rounded-lg border-none bg-gray-100 focus:ring-0" placeholder="What's on your mind?" />
-  </div>
-  </div>
---}}
