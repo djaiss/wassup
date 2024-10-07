@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cycle_id')->nullable();
             $table->string('title');
             $table->longText('description')->nullable();
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
             $table->foreign('cycle_id')->references('id')->on('cycles')->onDelete('cascade');
         });
