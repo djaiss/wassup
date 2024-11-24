@@ -1,5 +1,5 @@
-<form wire:submit="store" class="grid sm:grid-cols-6 sm:grid-rows-1 grid-rows-2 gap-4">
-  <div class="col-span-6 sm:col-start-1 sm:col-end-6 overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
+<form wire:submit="store" class="grid grid-rows-2 gap-4 sm:grid-cols-6 sm:grid-rows-1">
+  <div class="col-span-6 overflow-hidden rounded-md border border-gray-200 bg-white sm:col-start-1 sm:col-end-6 sm:rounded-lg dark:bg-gray-800">
     <div class="border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
       <h1 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ __('Draft a new cycle') }}</h1>
 

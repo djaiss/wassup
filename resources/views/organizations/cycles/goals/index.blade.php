@@ -56,13 +56,9 @@
 
         <!-- right -->
         <div class="bg-white px-3 py-3">
-          <div>
-            1.5 average goal per member
-          </div>
+          <div>1.5 average goal per member</div>
 
-          <div>
-            33 goals total
-          </div>
+          <div>33 goals total</div>
 
           <!-- high level overview of goals for members -->
           @foreach ($members as $member)

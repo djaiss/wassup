@@ -1,7 +1,6 @@
 <x-app-layout :organization="$organization" :member="$member">
   <div class="py-12">
     <div class="mx-auto max-w-5xl px-2 sm:px-4">
-
       <!-- check if there is a cycle -->
       @if ($cycle)
         <!-- cycle title -->
