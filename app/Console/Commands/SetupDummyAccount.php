@@ -4,17 +4,10 @@ namespace App\Console\Commands;
 
 use App\Actions\CreateCycle;
 use App\Actions\CreateOrganization;
-use App\Actions\Fortify\CreateNewUser;
 use App\Enums\Permission;
-use App\Models\Channel;
 use App\Models\Member;
 use App\Models\Organization;
-use App\Models\Team;
-use App\Models\Topic;
 use App\Models\User;
-use App\Services\AddUserToTeam;
-use App\Services\CreateAccount;
-use App\Services\CreateTeam;
 use Faker\Factory as Faker;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
@@ -155,7 +148,7 @@ class SetupDummyAccount extends Command
             ))->execute();
 
             User::inRandomOrder()->whereNot('id', $this->user->id)->get()
-                ->map(fn(User $user) => Member::create([
+                ->map(fn (User $user) => Member::create([
                     'user_id' => $user->id,
                     'organization_id' => $this->organization->id,
                     'permission' => Permission::Member,

@@ -6,9 +6,9 @@ use App\Actions\CreateGoal;
 use App\Models\Cycle;
 use App\Models\Member;
 use Illuminate\Support\Collection;
-use Livewire\Component;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
 class Goal extends Component
@@ -43,7 +43,7 @@ class Goal extends Component
 
     public function toggleAddMode(): void
     {
-        $this->addMode = !$this->addMode;
+        $this->addMode = ! $this->addMode;
         $this->title = '';
     }
 

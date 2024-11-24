@@ -9,6 +9,5 @@ class GoalViewModel
 {
     public static function index(Cycle $cycle, Member $member): void
     {
-
     }
 }
