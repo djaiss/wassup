@@ -1,4 +1,4 @@
-@props(['placeholder' => '', 'height' => 'h-auto min-h-[80px]'])
+@props(['placeholder' => '', 'height' => 'min-h-[150px]'])
 
 <div class="w-full">
   <textarea type="text" x-data="{

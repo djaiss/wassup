@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-5xl px-2 sm:px-4">
       <!-- cycle title -->
       <div class="mb-6 flex justify-between">
-        <h2 class="text-xl font-bold">Cycle #{{ $cycle->number }}</h2>
+        <h2 class="text-xl font-bold">{{ __('Cycle #:cycleNumber', ['cycleNumber' => $cycle->number]) }}</h2>
 
         @if ($cycle->is_active)
           <div class="flex items-center rounded-lg border border-green-900 bg-green-50 px-2 py-0 text-xs text-green-900">
@@ -42,6 +42,38 @@
             <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle]) }}" wire:navigate.hover class="rounded-l-md px-3 py-1 text-sm shadow-sm hover:bg-white">{{ __('Description') }}</a>
             <a href="{{ route('goals.index', ['slug' => $organization->slug, 'cycle' => $cycle]) }}" class="bg-white px-3 py-1 text-sm font-medium shadow-sm hover:bg-white">{{ __('Goals') }}</a>
           </div>
+        </div>
+      </div>
+
+      <!-- goals detaisl -->
+      <div class="goal-grid grid gap-4">
+        <!-- left -->
+        <div>
+          @foreach ($members as $member)
+            <livewire:organizations.goals.goal lazy :member="$member" />
+          @endforeach
+        </div>
+
+        <!-- right -->
+        <div class="bg-white px-3 py-3">
+          <div>
+            1.5 average goal per member
+          </div>
+
+          <div>
+            33 goals total
+          </div>
+
+          <!-- high level overview of goals for members -->
+          @foreach ($members as $member)
+            <div class="flex justify-between">
+              <div class="flex items-center">
+                <img class="mr-3 h-6 w-6 rounded-full object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
+                <span>{{ $member->user->name }}</span>
+              </div>
+              <span>3</span>
+            </div>
+          @endforeach
         </div>
       </div>
 

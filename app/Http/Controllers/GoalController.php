@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Cache\CycleCache;
+use App\Http\ViewModels\CycleViewModel;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -18,14 +19,14 @@ class GoalController extends Controller
 
         $goals = $cycle->goals()->get();
 
-        $data = CycleCache::make(
-            organization: $organization,
-            cycle: $cycle
-        )->value();
+        $data = CycleViewModel::show($cycle);
+
+        $members = $organization->members()->with('user')->get();
 
         return view('organizations.cycles.goals.index', [
             'organization' => $organization,
             'member' => $member,
+            'members' => $members,
             'goals' => $goals,
             'cycle' => $data['cycle'],
             'nextCycle' => $data['nextCycle'],

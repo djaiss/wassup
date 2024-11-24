@@ -7,6 +7,7 @@ namespace App\Actions;
 use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
+use Illuminate\Support\Facades\Auth;
 
 class JoinOrganization
 {
@@ -31,13 +32,13 @@ class JoinOrganization
             ->where('code', $this->code)
             ->firstOrFail();
 
-        $memberAlreadyExists = Member::where('user_id', auth()->user()->id)
+        $memberAlreadyExists = Member::where('user_id', Auth::user()->id)
             ->where('organization_id', $this->organization->id)
             ->exists();
 
         if (! $memberAlreadyExists) {
             Member::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => Auth::user()->id,
                 'organization_id' => $this->organization->id,
                 'permission' => Permission::Member,
             ]);

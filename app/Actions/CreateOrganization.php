@@ -7,6 +7,7 @@ namespace App\Actions;
 use App\Enums\Permission;
 use App\Models\Member;
 use App\Models\Organization;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class CreateOrganization
@@ -54,7 +55,7 @@ class CreateOrganization
     private function createMember(): void
     {
         Member::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => Auth::user()->id,
             'organization_id' => $this->organization->id,
             'permission' => Permission::Administrator,
         ]);

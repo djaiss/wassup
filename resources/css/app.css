@@ -10,8 +10,16 @@
   grid-template-columns: 200px 1fr 300px;
 }
 
+.goal-grid {
+  grid-template-columns: 1fr 200px;
+}
+
 @media (max-width: 480px) {
   .special-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-grid {
     grid-template-columns: 1fr;
   }
 }

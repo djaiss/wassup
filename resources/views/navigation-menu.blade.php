@@ -14,7 +14,7 @@
         @if ($organization->id > 0)
           <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
             <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show')">
-              {{ __('News feed') }}
+              {{ __('Cycles') }}
             </x-nav-link>
 
             <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.people.index')">

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('goals', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('cycle_id')->nullable();
-            $table->string('title');
+            $table->text('title');
             $table->longText('description')->nullable();
             $table->boolean('is_completed')->default(false);
             $table->timestamps();

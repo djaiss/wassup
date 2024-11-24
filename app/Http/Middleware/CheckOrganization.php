@@ -6,6 +6,7 @@ use App\Models\Member;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckOrganization
@@ -22,7 +23,7 @@ class CheckOrganization
         try {
             $member = Member::with('organization')->whereHas('organization', function ($query) use ($slug): void {
                 $query->where('slug', $slug);
-            })->where('user_id', auth()->user()->id)->firstOrFail();
+            })->where('user_id', Auth::user()->id)->firstOrFail();
 
             $request->attributes->add(['member' => $member]);
             $request->attributes->add(['organization' => $member->organization]);

@@ -13,7 +13,9 @@
     "laravel/jetstream": "^5.1",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
-    "livewire/livewire": "^3.0"
+    "livewire/livewire": "^3.0",
+    "mallardduck/blade-lucide-icons": "^1.23",
+    "masmerise/livewire-toaster": "^2.4"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.13",
@@ -56,7 +58,7 @@
     ],
     "refactor": "rector",
     "test:refactor": "rector --dry-run",
-    "test:types": "phpstan analyse",
+    "test:types": "phpstan analyse --memory-limit 256M",
     "test:unit": "php artisan migrate:fresh --database=testing && phpunit",
     "test": [
       "@refactor",
