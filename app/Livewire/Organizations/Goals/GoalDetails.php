@@ -77,7 +77,7 @@ class GoalDetails extends Component
             'description' => 'nullable|string|min:3|max:2000',
         ]);
 
-        $goal =(new CreateGoal(
+        $goal = (new CreateGoal(
             member: $this->member,
             cycle: $this->cycle,
             title: $this->title,
@@ -123,7 +123,7 @@ class GoalDetails extends Component
 
         $goal = GoalViewModel::goal($goal);
 
-        $this->goals = $this->goals->map(fn(array $existingGoal): array => $existingGoal['id'] === $goalId ? $goal : $existingGoal);
+        $this->goals = $this->goals->map(fn (array $existingGoal): array => $existingGoal['id'] === $goalId ? $goal : $existingGoal);
     }
 
     public function resetEdit(): void
@@ -145,6 +145,6 @@ class GoalDetails extends Component
 
         Toaster::success(__('Goal deleted'));
 
-        $this->goals = $this->goals->reject(fn(array $goal): bool => $goal['id'] === $goalId);
+        $this->goals = $this->goals->reject(fn (array $goal): bool => $goal['id'] === $goalId);
     }
 }

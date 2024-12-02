@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Exceptions\OrganizationMismatchException;
 use App\Models\Cycle;
 use App\Models\Goal;
 use App\Models\Member;
-use App\Exceptions\OrganizationMismatchException;
 
 class CreateGoal
 {
