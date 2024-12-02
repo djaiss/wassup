@@ -49,7 +49,7 @@ class GoalDetails extends Component
         return view('livewire.organizations.goals.goal');
     }
 
-    public function placeholder()
+    public function placeholder(): string
     {
         return <<<'HTML'
         <div class="border-b border-gray-200 bg-white mb-4">
@@ -123,7 +123,7 @@ class GoalDetails extends Component
 
         $goal = GoalViewModel::goal($goal);
 
-        $this->goals = $this->goals->map(fn(array $existingGoal) => $existingGoal['id'] === $goalId ? $goal : $existingGoal);
+        $this->goals = $this->goals->map(fn(array $existingGoal): array => $existingGoal['id'] === $goalId ? $goal : $existingGoal);
     }
 
     public function resetEdit(): void
@@ -145,6 +145,6 @@ class GoalDetails extends Component
 
         Toaster::success(__('Goal deleted'));
 
-        $this->goals = $this->goals->reject(fn(array $goal) => $goal['id'] === $goalId);
+        $this->goals = $this->goals->reject(fn(array $goal): bool => $goal['id'] === $goalId);
     }
 }

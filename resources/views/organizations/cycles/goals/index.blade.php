@@ -34,7 +34,7 @@
     <div class="mx-auto max-w-3xl px-2 sm:px-4">
       <div>
         @foreach ($members as $member)
-        <livewire:organizations.goals.goal-details lazy :member="$member" :cycle="$cycle" />
+          <livewire:organizations.goals.goal-details lazy :member="$member" :cycle="$cycle" />
         @endforeach
       </div>
 

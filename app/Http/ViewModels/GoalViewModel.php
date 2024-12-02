@@ -14,7 +14,7 @@ class GoalViewModel
         return Goal::where('cycle_id', $cycle->id)
             ->where('member_id', $member->id)
             ->get()
-            ->map(fn (Goal $goal) => self::goal($goal));
+            ->map(fn (Goal $goal): array => self::goal($goal));
     }
 
     public static function goal(Goal $goal): array
