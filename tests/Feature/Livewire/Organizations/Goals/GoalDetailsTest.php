@@ -3,11 +3,9 @@
 namespace Tests\Feature\Livewire\Organizations\Goals;
 
 use App\Livewire\Organizations\Goals\GoalDetails;
-use App\Models\Contact;
 use App\Models\Cycle;
 use App\Models\Goal;
 use App\Models\Member;
-use App\Models\Note;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
