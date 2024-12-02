@@ -88,7 +88,7 @@
       @endif
     @empty
       @if (! $addMode)
-        <div class="px-4 py-2 text-sm text-gray-500">{{ __('No goals found') }}</div>
+        <div id="blank-state" class="px-4 py-2 text-sm text-gray-500">{{ __('No goals found') }}</div>
       @endif
     @endforelse
 
