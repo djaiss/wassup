@@ -21,12 +21,13 @@ class GoalTest extends TestCase
     }
 
     #[Test]
-    public function it_has_many_members(): void
+    public function it_belongs_to_a_member(): void
     {
-        $goal = Goal::factory()->create();
         $member = Member::factory()->create();
-        $goal->members()->attach($member);
+        $goal = Goal::factory()->create([
+            'member_id' => $member->id,
+        ]);
 
-        $this->assertCount(1, $goal->members);
+        $this->assertTrue($goal->member()->exists());
     }
 }

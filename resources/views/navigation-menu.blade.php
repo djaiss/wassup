@@ -17,6 +17,10 @@
               {{ __('Cycles') }}
             </x-nav-link>
 
+            <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show')">
+              {{ __('Projects') }}
+            </x-nav-link>
+
             <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.people.index')">
               {{ __('People') }}
             </x-nav-link>

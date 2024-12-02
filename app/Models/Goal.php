@@ -22,6 +22,7 @@ class Goal extends Model
      */
     protected $fillable = [
         'cycle_id',
+        'member_id',
         'title',
         'description',
         'is_completed',
@@ -36,12 +37,11 @@ class Goal extends Model
     }
 
     /**
-     * Get the member records associated with the goal.
+     * Get the member record associated with the goal.
      */
-    public function members(): BelongsToMany
+    public function member(): BelongsTo
     {
-        return $this->belongsToMany(Member::class)
-            ->withTimestamps();
+        return $this->belongsTo(Member::class);
     }
 
     /**
