@@ -101,6 +101,13 @@ jobs:
         run: |
           sudo systemctl start mysql.service
           mysql --protocol=tcp -u root -proot -e "CREATE DATABASE IF NOT EXISTS wassup CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+      - name: Create pgsql database
+        if: matrix.connection == 'pgsql'
+        run: |
+          sudo systemctl start postgresql.service
+          sudo -u postgres psql --command="CREATE USER root PASSWORD 'root'" --command="\du"
+          sudo -u postgres createdb --owner=root wassup
+          PGPASSWORD=root psql --username=root --host=localhost --list wassup
 
       - name: Generate key
         run: php artisan key:generate
