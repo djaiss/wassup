@@ -7,13 +7,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Member extends Model
+class Goal extends Model
 {
     use HasFactory;
 
-    protected $table = 'members';
+    protected $table = 'goals';
 
     /**
      * The attributes that are mass assignable.
@@ -21,33 +20,27 @@ class Member extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'organization_id',
-        'permission',
+        'cycle_id',
+        'member_id',
+        'title',
+        'description',
+        'is_completed',
     ];
 
     /**
-     * The user the member belongs to.
+     * The cycle the goal belongs to.
      */
-    public function user(): BelongsTo
+    public function cycle(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Cycle::class);
     }
 
     /**
-     * The organization the member belongs to.
+     * Get the member record associated with the goal.
      */
-    public function organization(): BelongsTo
+    public function member(): BelongsTo
     {
-        return $this->belongsTo(Organization::class);
-    }
-
-    /**
-     * The goals the member has.
-     */
-    public function goals(): HasMany
-    {
-        return $this->hasMany(Goal::class);
+        return $this->belongsTo(Member::class);
     }
 
     /**
@@ -58,6 +51,7 @@ class Member extends Model
     protected function casts(): array
     {
         return [
+            'is_completed' => 'boolean',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];

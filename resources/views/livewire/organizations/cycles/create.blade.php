@@ -1,5 +1,5 @@
-<form wire:submit="store" class="grid grid-cols-6 gap-4">
-  <div class="col-start-1 col-end-6 overflow-hidden rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
+<form wire:submit="store" class="grid grid-rows-2 gap-4 sm:grid-cols-6 sm:grid-rows-1">
+  <div class="col-span-6 overflow-hidden rounded-md border border-gray-200 bg-white sm:col-start-1 sm:col-end-6 sm:rounded-lg dark:bg-gray-800">
     <div class="border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
       <h1 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ __('Draft a new cycle') }}</h1>
 
@@ -16,21 +16,19 @@
 
     <div class="p-6">
       <x-label for="description" :value="__('Tell your team what this cycle is going to be about')" class="mb-1" />
-      <x-textarea wire:model="description" id="description" class="min-h-[600px] w-full" required />
+      <x-textarea wire:model="description" id="description" class="w-full" :height="'min-h-[600px]'" required />
       <p class="mt-1 text-xs text-gray-600">{{ __('This editor supports markdown.') }}</p>
       <x-input-error for="description" class="mt-2" />
     </div>
   </div>
 
-  <div>
-    <div class="">
-      <x-button class="mb-3 w-full text-center">
-        {{ __('Save') }}
-      </x-button>
+  <div class="col-span-6 sm:col-span-1">
+    <x-button class="mb-3 w-full text-center">
+      {{ __('Save') }}
+    </x-button>
 
-      <x-secondary-button hover="true" href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" class="w-full">
-        {{ __('Back') }}
-      </x-secondary-button>
-    </div>
+    <x-secondary-button hover="true" href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" class="w-full">
+      {{ __('Back') }}
+    </x-secondary-button>
   </div>
 </form>

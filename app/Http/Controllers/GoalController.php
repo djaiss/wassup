@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\ViewModels\CycleViewModel;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,10 +16,20 @@ class GoalController extends Controller
         $member = $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
-        return view('organizations.cycles.delete', [
+        $goals = $cycle->goals()->get();
+
+        $data = CycleViewModel::show($cycle);
+
+        $members = $organization->members()->with('user')->get();
+
+        return view('organizations.cycles.goals.index', [
             'organization' => $organization,
             'member' => $member,
-            'cycle' => $cycle,
+            'members' => $members,
+            'goals' => $goals,
+            'cycle' => $data['cycle'],
+            'nextCycle' => $data['nextCycle'],
+            'previousCycle' => $data['previousCycle'],
         ]);
     }
 }

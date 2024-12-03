@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('goals', function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('cycle_id')->nullable();
-            $table->string('title');
+            $table->unsignedBigInteger('member_id')->nullable();
+            $table->text('title');
             $table->longText('description')->nullable();
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
             $table->foreign('cycle_id')->references('id')->on('cycles')->onDelete('cascade');
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });
     }
 

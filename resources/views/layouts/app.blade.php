@@ -50,6 +50,7 @@
 
     @stack('modals')
 
+    <x-toaster-hub />
     @livewireScripts
   </body>
 </html>

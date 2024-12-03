@@ -4,12 +4,12 @@ namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\CreateCycle;
 use App\Jobs\RefreshCycleCache;
-use App\Models\Cycle;
 use App\Models\Organization;
 use Carbon\Carbon;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class Create extends Component
 {
@@ -34,7 +34,7 @@ class Create extends Component
         ]);
     }
 
-    public function store(): void
+    public function store(): Redirector
     {
         $this->validate();
 
@@ -50,9 +50,9 @@ class Create extends Component
 
         RefreshCycleCache::dispatch($this->organization);
 
-        $this->redirectRoute('organizations.cycles.show', [
+        return redirect()->route('organizations.cycles.show', [
             'slug' => $this->organization->slug,
             'cycle' => $cycle->number,
-        ]);
+        ])->success(trans('Cycle created'));
     }
 }

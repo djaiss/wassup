@@ -28,7 +28,6 @@ class RefreshCycleCache implements ShouldQueue
         $this->organization->cycles->each(fn (Cycle $cycle): mixed => CycleCache::make(
             organization: $this->organization,
             cycle: $cycle,
-        )->refresh()
-        );
+        )->refresh());
     }
 }

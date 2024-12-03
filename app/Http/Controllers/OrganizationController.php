@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Cache\CycleCache;
+use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class OrganizationController extends Controller
@@ -16,7 +17,7 @@ class OrganizationController extends Controller
 
     public function index(): View
     {
-        $organizations = auth()->user()->members()
+        $organizations = Auth::user()->members()
             ->with('organization')
             ->get()
             ->map(fn (Member $member): array => [
@@ -43,15 +44,14 @@ class OrganizationController extends Controller
             ->orderBy('number', 'desc')
             ->first();
 
-        if ($cycle) {
-            $data = CycleCache::make(
-                organization: $organization,
-                cycle: $cycle
-            )->value();
-        } else {
+        if (! $cycle) {
             $cycle = $organization->cycles()
                 ->orderBy('number', 'desc')
                 ->first();
+        }
+
+        if ($cycle) {
+            $data = CycleViewModel::show($cycle);
         }
 
         return view('organizations.show', [

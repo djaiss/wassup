@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Goal;
 use App\Models\Member;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
@@ -25,5 +26,16 @@ class MemberTest extends TestCase
         $member = Member::factory()->create();
 
         $this->assertTrue($member->organization()->exists());
+    }
+
+    #[Test]
+    public function it_has_many_goals(): void
+    {
+        $member = Member::factory()->create();
+        Goal::factory()->create([
+            'member_id' => $member->id,
+        ]);
+
+        $this->assertCount(1, $member->goals);
     }
 }

@@ -20,8 +20,8 @@ final class CycleCache extends CacheHelper
     protected int $ttl = 604800; // 1 week
 
     public function __construct(
-        protected readonly Organization $organization,
-        protected readonly Cycle $cycle,
+        private Organization $organization,
+        private Cycle $cycle,
     ) {
         $this->identifier = $organization->id . '_' . $cycle->id;
     }
