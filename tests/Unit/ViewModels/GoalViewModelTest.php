@@ -55,7 +55,7 @@ class GoalViewModelTest extends TestCase
 
         $this->assertEquals(
             [
-                'id' => $cycle->id,
+                'id' => $goal->id,
                 'title' => 'My goal',
                 'description' => 'My description',
             ],
