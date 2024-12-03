@@ -5,3 +5,4 @@ it uses jetstream
 
 i want to to have a clean code
 i want to use strict types when possible
+i want to use named arguments from php 8.0 when possible

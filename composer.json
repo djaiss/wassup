@@ -57,6 +57,7 @@
       "@php artisan migrate --graceful --ansi"
     ],
     "refactor": "rector",
+    "style:prettier": "npx prettier --write resources/",
     "test:refactor": "rector --dry-run",
     "test:types": "phpstan analyse --memory-limit 256M",
     "test:unit": "php artisan migrate:fresh --database=testing && phpunit",
@@ -64,6 +65,10 @@
       "@refactor",
       "@test:types",
       "@test:unit"
+    ],
+    "precommit": [
+      "@style:prettier",
+      "@test"
     ]
   },
   "extra": {
