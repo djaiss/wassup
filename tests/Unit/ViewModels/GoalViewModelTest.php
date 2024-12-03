@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\ViewModels;
 
-use App\Http\ViewModels\CycleViewModel;
 use App\Http\ViewModels\GoalViewModel;
 use App\Models\Cycle;
 use App\Models\Goal;
