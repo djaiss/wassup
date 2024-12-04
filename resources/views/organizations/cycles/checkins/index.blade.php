@@ -99,30 +99,30 @@
     </div>
 
     <!-- checkins list -->
-    <div class="mx-auto max-w-4xl px-2 sm:px-4 mb-10">
-      <div class="grid checkin-grid gap-4">
+    <div class="mx-auto mb-10 max-w-4xl px-2 sm:px-4">
+      <div class="checkin-grid grid gap-4">
         <div class="flex flex-col space-y-1">
           <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-2 py-1.5">
             <div class="flex items-center">
               <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
               <span class="text-sm font-medium">{{ $member->user->name }}</span>
             </div>
-            <div class="flex justify-center items-center flex h-3 w-3 rounded-full bg-green-600/10 dark:bg-green-500/10 space-x-0.5">
+            <div class="flex h-3 w-3 items-center justify-center space-x-0.5 rounded-full bg-green-600/10 dark:bg-green-500/10">
               <div class="h-1 w-1 rounded-full bg-green-600 dark:bg-green-500"></div>
             </div>
           </div>
           @foreach ($members as $member)
             <div class="flex items-center justify-between px-2 py-1.5">
               <div class="flex items-center">
-              <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
-              <span class="text-sm font-medium">{{ $member->user->name }}</span>
+                <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
+                <span class="text-sm font-medium">{{ $member->user->name }}</span>
               </div>
             </div>
           @endforeach
         </div>
 
         <div class="">
-          <div class="rounded-lg border border-gray-200 bg-white p-4 mb-4">
+          <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4">
             <x-textarea class="w-full" />
 
             <!-- actions -->
@@ -135,13 +135,13 @@
 
           <div>
             <!-- avatar + date -->
-            <div class="flex justify-between mb-1">
+            <div class="mb-1 flex justify-between">
               <img class="h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
               <span class="text-xs text-gray-600">{{ now()->format('M j, Y') }}</span>
             </div>
 
             <!-- checkin text -->
-            <div class="prose bg-white rounded-lg border border-gray-200 p-4">
+            <div class="prose rounded-lg border border-gray-200 bg-white p-4">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
