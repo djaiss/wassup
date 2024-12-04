@@ -6,7 +6,6 @@ namespace App\Actions;
 
 use App\Exceptions\OrganizationMismatchException;
 use App\Models\Checkin;
-use App\Models\Goal;
 use App\Models\Member;
 
 class UpdateCheckin

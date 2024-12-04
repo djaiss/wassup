@@ -4,14 +4,13 @@ namespace App\Http\ViewModels;
 
 use App\Models\Checkin;
 use App\Models\Cycle;
-use App\Models\Goal;
 use App\Models\Member;
 use Illuminate\Support\Collection;
 
 class CheckinViewModel
 {
     /**
-     * Show all check-ins of a member for a cycle
+     * Show all check-ins of a member for a cycle.
      */
     public static function show(Cycle $cycle, Member $member): Collection
     {

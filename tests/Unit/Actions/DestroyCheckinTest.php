@@ -3,9 +3,7 @@
 namespace Tests\Unit\Actions;
 
 use App\Actions\DestroyCheckin;
-use App\Actions\DestroyGoal;
 use App\Models\Checkin;
-use App\Models\Goal;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;

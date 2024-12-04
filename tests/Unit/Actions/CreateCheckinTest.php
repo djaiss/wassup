@@ -6,7 +6,6 @@ use App\Actions\CreateCheckin;
 use App\Exceptions\OrganizationMismatchException;
 use App\Models\Checkin;
 use App\Models\Cycle;
-use App\Models\Goal;
 use App\Models\Member;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;

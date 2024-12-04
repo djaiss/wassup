@@ -3,7 +3,6 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Checkin;
-use App\Models\Goal;
 use App\Models\Member;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
