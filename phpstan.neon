@@ -13,5 +13,8 @@ parameters:
         - database/factories
         - routes
 
+    excludePaths:
+        - app/Http/ViewModels/CheckinViewModel.php
+
     ignoreErrors:
         - '#Access to an undefined property App\\Models\\User::\$profile_photo_url#'

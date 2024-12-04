@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Checkin;
 use App\Models\Cycle;
 use App\Models\Goal;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -29,6 +30,16 @@ class CycleTest extends TestCase
         ]);
         $this->assertTrue($cycle->goals()->exists());
         $this->assertCount(3, $cycle->goals);
+    }
+
+    #[Test]
+    public function it_has_many_checkins(): void
+    {
+        $cycle = Cycle::factory()->create();
+        Checkin::factory()->count(3)->create([
+            'cycle_id' => $cycle->id,
+        ]);
+        $this->assertTrue($cycle->checkins()->exists());
     }
 
     #[Test]

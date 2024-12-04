@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\JoinOrganizationController;
@@ -36,7 +37,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::delete('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'destroy'])->name('organizations.cycles.destroy');
 
             // goals
-            Route::get('organizations/{slug}/cycles/{cycle}/goals', [GoalController::class, 'index'])->name('goals.index');
+            Route::get('organizations/{slug}/cycles/{cycle}/goals', [GoalController::class, 'index'])->name('organizations.goals.index');
+
+            // check-ins
+            Route::get('organizations/{slug}/cycles/{cycle}/check-ins', [CheckinController::class, 'index'])->name('organizations.checkins.index');
         });
 
         Route::get('organizations/{slug}/people', [PeopleController::class, 'index'])->name('organizations.people.index');

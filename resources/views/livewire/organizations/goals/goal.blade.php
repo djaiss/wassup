@@ -97,7 +97,7 @@
         <!-- when description is not added -->
         <div x-show="!addDescription" class="flex flex-col">
           <div class="flex">
-            <x-input wire:model="title" wire:keydown.esc="resetEdit" type="text" class="mr-2 block w-full" data-1p-ignore required autofocus autocomplete="title" />
+            <x-input wire:model="title" wire:keydown.esc="toggleAddMode" type="text" class="mr-2 block w-full" data-1p-ignore required autofocus autocomplete="title" />
 
             <x-button wire:loading.attr="disabled">
               {{ __('Save') }}

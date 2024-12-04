@@ -8,6 +8,7 @@ use App\Jobs\RefreshCycleCache;
 use App\Models\Cycle;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class Toggle extends Component
 {
@@ -19,7 +20,7 @@ class Toggle extends Component
         return view('livewire.organizations.cycles.toggle');
     }
 
-    public function toggle(): void
+    public function toggle(): Redirector
     {
         (new ToggleCycle(
             cycle: $this->cycle,
@@ -35,9 +36,9 @@ class Toggle extends Component
 
         RefreshCycleCache::dispatch($this->cycle->organization);
 
-        $this->redirectRoute('organizations.cycles.show', [
+        return redirect()->route('organizations.cycles.show', [
             'slug' => $this->cycle->organization->slug,
             'cycle' => $this->cycle->number,
-        ]);
+        ])->success(trans('Cycle updated'));
     }
 }
