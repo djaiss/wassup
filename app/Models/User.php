@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Permission;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -63,6 +64,22 @@ class User extends Authenticatable implements MustVerifyEmail
     public function members(): HasMany
     {
         return $this->hasMany(Member::class);
+    }
+
+    /**
+     * Check if the user is a member of an organization.
+     */
+    public function isMemberOf(Organization $organization): bool
+    {
+        return $this->members()->where('organization_id', $organization->id)->exists();
+    }
+
+    /**
+     * Check if the user is an administrator of an organization.
+     */
+    public function isAdministratorOf(Organization $organization): bool
+    {
+        return $this->members()->where('organization_id', $organization->id)->where('permission', Permission::Administrator)->exists();
     }
 
     /**

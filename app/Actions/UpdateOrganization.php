@@ -8,19 +8,23 @@ use App\Exceptions\OrganizationMismatchException;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class DestroyOrganization
+class UpdateOrganization
 {
     public function __construct(
         public User $user,
         public Organization $organization,
+        public string $name,
     ) {
     }
 
-    public function execute(): void
+    public function execute(): Organization
     {
         $this->validate();
-        $this->organization->delete();
+        $this->update();
+
+        return $this->organization;
     }
 
     private function validate(): void
@@ -28,5 +32,13 @@ class DestroyOrganization
         if (! $this->user->isAdministratorOf($this->organization)) {
             throw new OrganizationMismatchException('User is not an administrator of the organization.');
         }
+    }
+
+    private function update(): void
+    {
+        $this->organization->update([
+            'name' => $this->name,
+            'slug' => Str::slug($this->name),
+        ]);
     }
 }

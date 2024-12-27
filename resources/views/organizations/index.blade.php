@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \Illuminate\Support\Collection $organizations
+ * @var array $url
+ */
+?>
+
 <x-app-layout>
   <div class="py-3 sm:py-12">
     <div class="mx-auto max-w-xl px-2 sm:px-0">

@@ -2,50 +2,42 @@
 
 namespace Tests\Unit\Actions;
 
-use App\Actions\DestroyOrganization;
+use App\Actions\UpdateCycle;
+use App\Actions\UpdateOrganization;
 use App\Enums\Permission;
 use App\Exceptions\OrganizationMismatchException;
+use App\Models\Cycle;
 use App\Models\Organization;
-use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class DestroyOrganizationTest extends TestCase
+class UpdateOrganizationTest extends TestCase
 {
     use DatabaseTransactions;
 
     #[Test]
-    public function it_deletes_an_organization(): void
+    public function it_updates_an_organization(): void
     {
         $member = $this->createMember(permission: Permission::Administrator);
 
-        (new DestroyOrganization(
+        $organization = (new UpdateOrganization(
             user: $member->user,
             organization: $member->organization,
-        ))->execute();
-
-        $this->assertDatabaseMissing('organizations', [
-            'id' => $member->organization->id,
-        ]);
-    }
-
-    #[Test]
-    public function it_throws_an_exception_if_the_user_is_not_a_member_of_the_organization(): void
-    {
-        $user = User::factory()->create();
-        $organization = Organization::factory()->create();
-
-        $this->expectException(OrganizationMismatchException::class);
-
-        (new DestroyOrganization(
-            user: $user,
-            organization: $organization,
+            name: 'Dunder Mifflin',
         ))->execute();
 
         $this->assertDatabaseHas('organizations', [
             'id' => $organization->id,
+            'name' => 'Dunder Mifflin',
+            'slug' => 'dunder-mifflin',
         ]);
+
+        $this->assertInstanceOf(
+            Organization::class,
+            $organization
+        );
     }
 
     #[Test]
@@ -55,13 +47,15 @@ class DestroyOrganizationTest extends TestCase
 
         $this->expectException(OrganizationMismatchException::class);
 
-        (new DestroyOrganization(
+        (new UpdateOrganization(
             user: $member->user,
             organization: $member->organization,
+            name: 'Dunder Mifflin',
         ))->execute();
 
         $this->assertDatabaseHas('organizations', [
             'id' => $member->organization->id,
+            'name' => $member->organization->name,
         ]);
     }
 }

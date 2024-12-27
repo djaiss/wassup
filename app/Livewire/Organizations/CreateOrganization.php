@@ -14,7 +14,11 @@ class CreateOrganization extends Component
 
     public function render()
     {
-        return view('livewire.organizations.create');
+        return view('livewire.organizations.create', [
+            'url' => [
+                'back' => route('organizations.index'),
+            ],
+        ]);
     }
 
     public function store(): void

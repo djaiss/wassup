@@ -1,3 +1,7 @@
+@props([
+  'url',
+])
+
 <div>
   <form wire:submit="store">
     <div class="rounded-t-lg border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
@@ -14,7 +18,7 @@
       </div>
 
       <div class="flex justify-between p-5">
-        <x-secondary-button hover="true" href="{{ route('organizations.index') }}">
+        <x-secondary-button hover="true" href="{{ $url['back'] }}">
           {{ __('Cancel') }}
         </x-secondary-button>
 

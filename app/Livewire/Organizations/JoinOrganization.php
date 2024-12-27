@@ -17,7 +17,11 @@ class JoinOrganization extends Component
 
     public function render()
     {
-        return view('livewire.organizations.join');
+        return view('livewire.organizations.join', [
+            'url' => [
+                'back' => route('organizations.index'),
+            ],
+        ]);
     }
 
     public function store(): void
