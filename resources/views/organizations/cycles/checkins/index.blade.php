@@ -25,83 +25,51 @@
         <div class="rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
           <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
             <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" wire:navigate.hover class="rounded-l-md px-3 py-1 text-sm hover:bg-white">{{ __('Description') }}</a>
-            <a href="{{ route('organizations.goals.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" wire:navigate.hover class="px-3 py-1 text-sm font-medium hover:bg-white">{{ __('Goals for the cycle') }}</a>
-            <a href="{{ route('organizations.checkins.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" class="rounded-r-md bg-white px-3 py-1 text-sm shadow-sm hover:bg-white hover:shadow-sm">{{ __('Check-ins') }}</a>
+            <a href="{{ route('organizations.goals.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" wire:navigate.hover class="px-3 py-1 text-sm hover:bg-white">{{ __('Goals for the cycle') }}</a>
+            <a href="{{ route('organizations.checkins.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" class="rounded-r-md bg-white px-3 py-1 font-medium text-sm shadow-sm hover:bg-white hover:shadow-sm">{{ __('Check-ins') }}</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- week selector -->
-    <div class="mx-auto max-w-6xl px-2 sm:px-4">
-      <div class="mb-8 grid grid-cols-1 rounded-lg border border-gray-200 bg-white sm:grid-cols-6">
-        <div class="flex flex-col rounded-l-lg border-r border-gray-200 px-3 py-2">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center text-xs">
-              <div class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">
-                <svg class="mr-1 h-3.5 w-3.5">
-                  <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-white" />
-                  <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-green-600" stroke-dasharray="31.4" stroke-dashoffset="{{ 31.4 - 31.4 * (2 / 19) }}" transform="rotate(-90 7 7)" />
-                </svg>
-                <span>7/19</span>
+    @if ($weeks)
+      <div class="mx-auto max-w-6xl px-2 sm:px-4">
+        <div class="mb-8 grid grid-flow-col rounded-lg border border-gray-200 bg-white sm:auto-cols-auto">
+          @foreach ($weeks as $week)
+          <a wire:navigate href="{{ $week['url']['week'] }}" class="{{ $week['is_current_week'] ? 'bg-gray-100' : '' }} hover:bg-gray-100 cursor-pointer flex flex-col first:rounded-l-lg last:rounded-r-lg border-r border-gray-200 px-3 py-2">
+            <div class="flex items-center justify-between">
+              <div class="text-sm">{{ $week['week'] }}</div>
+              <div class="flex items-center text-xs">
+                <div class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">
+                  <svg class="mr-1 h-3.5 w-3.5">
+                    <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-white" />
+                    <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-green-600" stroke-dasharray="31.4" stroke-dashoffset="{{ 31.4 - 31.4 * (2 / 19) }}" transform="rotate(-90 7 7)" />
+                  </svg>
+                  <span>7/19</span>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
-        </div>
-        <div class="flex flex-col border-r border-gray-200 px-2 py-1">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center rounded-lg border border-gray-200 bg-white px-2 py-0 text-xs">
-              <span class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">7/19</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
-        </div>
-        <div class="flex flex-col rounded-r-lg px-2 py-1">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center rounded-lg border border-gray-200 bg-white px-2 py-0 text-xs">
-              <span class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">7/19</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
-        </div>
-        <div class="flex flex-col border-r border-gray-200 px-2 py-1">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center rounded-lg border border-gray-200 bg-white px-2 py-0 text-xs">
-              <span class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">7/19</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
-        </div>
-        <div class="flex flex-col rounded-r-lg px-2 py-1">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center rounded-lg border border-gray-200 bg-white px-2 py-0 text-xs">
-              <span class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">7/19</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
-        </div>
-        <div class="flex flex-col rounded-r-lg px-2 py-1">
-          <div class="flex items-center justify-between">
-            <div>Week 1</div>
-            <div class="flex items-center rounded-lg border border-gray-200 bg-white px-2 py-0 text-xs">
-              <span class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">7/19</span>
-            </div>
-          </div>
-          <div class="text-xs text-gray-600">Dec 3 - Dec 19</div>
+              </div>
+            <div class="text-xs text-gray-600">{{ $week['start_day'] }} - {{ $week['end_day'] }}</div>
+          </a>
+          @endforeach
         </div>
       </div>
-    </div>
+    @endif
 
     <!-- checkins list -->
     <div class="mx-auto mb-10 max-w-4xl px-2 sm:px-4">
       <div class="checkin-grid grid gap-4">
+        <!-- list of members -->
         <div class="flex flex-col space-y-1">
+          <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-2 py-1.5">
+            <div class="flex items-center">
+              <span class="text-sm font-medium">{{ __('All members') }}</span>
+            </div>
+            <div class="flex h-3 w-3 items-center justify-center space-x-0.5 rounded-full bg-green-600/10 dark:bg-green-500/10">
+              <div class="h-1 w-1 rounded-full bg-green-600 dark:bg-green-500"></div>
+            </div>
+          </div>
           <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-2 py-1.5">
             <div class="flex items-center">
               <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
@@ -114,39 +82,15 @@
           @foreach ($members as $member)
             <div class="flex items-center justify-between px-2 py-1.5">
               <div class="flex items-center">
-                <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
+                <img class="mr-1 h-6 w-6 rounded-full border border-gray-200 object-cover shadow ring-1 ring-slate-900/10" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
                 <span class="text-sm font-medium">{{ $member->user->name }}</span>
               </div>
             </div>
           @endforeach
         </div>
 
-        <div class="">
-          <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4">
-            <x-textarea class="w-full" />
-
-            <!-- actions -->
-            <div class="flex items-center justify-end">
-              <x-button>
-                {{ __('Save') }}
-              </x-button>
-            </div>
-          </div>
-
-          <div>
-            <!-- avatar + date -->
-            <div class="mb-1 flex justify-between">
-              <img class="h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
-              <span class="text-xs text-gray-600">{{ now()->format('M j, Y') }}</span>
-            </div>
-
-            <!-- checkin text -->
-            <div class="prose rounded-lg border border-gray-200 bg-white p-4">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-            </div>
-          </div>
-        </div>
+        <!-- checkins -->
+        <livewire:organizations.checkins.checkin :member="$member" :cycle="$cycle" :startDay="$day" />
       </div>
     </div>
 

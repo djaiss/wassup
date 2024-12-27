@@ -24,6 +24,11 @@ class ToggleCycle
     private function toggle(): void
     {
         $this->cycle->is_active = ! $this->cycle->is_active;
+        if ($this->cycle->is_active) {
+            $this->cycle->started_at = now()->toDateTimeString();
+        } else {
+            $this->cycle->ended_at = now()->toDateTimeString();
+        }
         $this->cycle->save();
     }
 
