@@ -3,7 +3,6 @@
 namespace Tests\Feature\Controllers;
 
 use App\Enums\Permission;
-use App\Models\Cycle;
 use App\Models\Member;
 use App\Models\Organization;
 use App\Models\User;

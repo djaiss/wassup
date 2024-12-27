@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Livewire\Organizations;
 
-use App\Livewire\Organizations\CreateOrganization;
 use App\Livewire\Organizations\JoinOrganization;
 use App\Models\Organization;
 use App\Models\User;

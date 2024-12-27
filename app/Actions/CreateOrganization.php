@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Actions;
 
 use App\Enums\Permission;
-use App\Exceptions\NameAlreadyTakenException;
 use App\Models\Member;
 use App\Models\Organization;
-use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -28,6 +26,7 @@ class CreateOrganization
 
         return $this->organization;
     }
+
     private function create(): void
     {
         $this->organization = Organization::create([

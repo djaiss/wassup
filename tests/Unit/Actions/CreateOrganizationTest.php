@@ -4,10 +4,8 @@ namespace Tests\Unit\Actions;
 
 use App\Actions\CreateOrganization;
 use App\Enums\Permission;
-use App\Exceptions\NameAlreadyTakenException;
 use App\Models\Organization;
 use App\Models\User;
-use Illuminate\Database\QueryException;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
