@@ -26,7 +26,7 @@
           <div class="text-muted-foreground mx-2 my-1 inline-flex h-9 items-center justify-center rounded-lg bg-gray-100 p-1">
             <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" wire:navigate.hover class="rounded-l-md px-3 py-1 text-sm hover:bg-white">{{ __('Description') }}</a>
             <a href="{{ route('organizations.goals.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" wire:navigate.hover class="px-3 py-1 text-sm hover:bg-white">{{ __('Goals for the cycle') }}</a>
-            <a href="{{ route('organizations.checkins.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" class="rounded-r-md bg-white px-3 py-1 font-medium text-sm shadow-sm hover:bg-white hover:shadow-sm">{{ __('Check-ins') }}</a>
+            <a href="{{ route('organizations.checkins.index', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" class="rounded-r-md bg-white px-3 py-1 text-sm font-medium shadow-sm hover:bg-white hover:shadow-sm">{{ __('Check-ins') }}</a>
           </div>
         </div>
       </div>
@@ -37,21 +37,21 @@
       <div class="mx-auto max-w-6xl px-2 sm:px-4">
         <div class="mb-8 grid grid-flow-col rounded-lg border border-gray-200 bg-white sm:auto-cols-auto">
           @foreach ($weeks as $week)
-          <a wire:navigate href="{{ $week['url']['week'] }}" class="{{ $week['is_current_week'] ? 'bg-gray-100' : '' }} hover:bg-gray-100 cursor-pointer flex flex-col first:rounded-l-lg last:rounded-r-lg border-r border-gray-200 px-3 py-2">
-            <div class="flex items-center justify-between">
-              <div class="text-sm">{{ $week['week'] }}</div>
-              <div class="flex items-center text-xs">
-                <div class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">
-                  <svg class="mr-1 h-3.5 w-3.5">
-                    <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-white" />
-                    <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-green-600" stroke-dasharray="31.4" stroke-dashoffset="{{ 31.4 - 31.4 * (2 / 19) }}" transform="rotate(-90 7 7)" />
-                  </svg>
-                  <span>7/19</span>
+            <a wire:navigate href="{{ $week['url']['week'] }}" class="{{ $week['is_current_week'] ? 'bg-gray-100' : '' }} flex cursor-pointer flex-col border-r border-gray-200 px-3 py-2 first:rounded-l-lg last:rounded-r-lg hover:bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="text-sm">{{ $week['week'] }}</div>
+                <div class="flex items-center text-xs">
+                  <div class="flex w-fit items-center space-x-1 rounded-md bg-green-600/10 py-0.5 pl-1 pr-1.5 text-xs text-green-600 dark:bg-green-500/10 dark:text-green-500">
+                    <svg class="mr-1 h-3.5 w-3.5">
+                      <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-white" />
+                      <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" fill="none" class="text-green-600" stroke-dasharray="31.4" stroke-dashoffset="{{ 31.4 - 31.4 * (2 / 19) }}" transform="rotate(-90 7 7)" />
+                    </svg>
+                    <span>7/19</span>
+                  </div>
                 </div>
               </div>
-              </div>
-            <div class="text-xs text-gray-600">{{ $week['start_day'] }} - {{ $week['end_day'] }}</div>
-          </a>
+              <div class="text-xs text-gray-600">{{ $week['start_day'] }} - {{ $week['end_day'] }}</div>
+            </a>
           @endforeach
         </div>
       </div>

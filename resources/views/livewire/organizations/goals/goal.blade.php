@@ -23,24 +23,10 @@
 
               @if ($goal['description'])
                 <div x-data="{ showDescription: false }" class="relative">
-                  <x-lucide-notebook-text
-                    @mouseenter="showDescription = true"
-                    @mouseleave="showDescription = false"
-                    class="ml-2 h-4 w-4 flex-shrink-0 text-gray-400 cursor-help hover:text-gray-600"
-                  />
+                  <x-lucide-notebook-text @mouseenter="showDescription = true" @mouseleave="showDescription = false" class="ml-2 h-4 w-4 flex-shrink-0 cursor-help text-gray-400 hover:text-gray-600" />
 
                   <!-- Description Modal/Popup -->
-                  <div
-                    x-show="showDescription"
-                    x-transition:enter="transition ease-out duration-100"
-                    x-transition:enter-start="opacity-0 scale-95"
-                    x-transition:enter-end="opacity-100 scale-100"
-                    x-transition:leave="transition ease-in duration-75"
-                    x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute left-0 z-50 mt-2 w-96 rounded-md bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5"
-                    x-cloak
-                  >
+                  <div x-show="showDescription" x-transition:enter="transition duration-100 ease-out" x-transition:enter-start="scale-95 opacity-0" x-transition:enter-end="scale-100 opacity-100" x-transition:leave="transition duration-75 ease-in" x-transition:leave-start="scale-100 opacity-100" x-transition:leave-end="scale-95 opacity-0" class="absolute left-0 z-50 mt-2 w-96 rounded-md bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5" x-cloak>
                     <div class="text-sm text-gray-600">
                       <p class="whitespace-pre-wrap">{{ $goal['description'] }}</p>
                     </div>
