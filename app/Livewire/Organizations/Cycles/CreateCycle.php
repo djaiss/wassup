@@ -2,16 +2,17 @@
 
 namespace App\Livewire\Organizations\Cycles;
 
-use App\Actions\CreateCycle;
+use App\Actions\CreateCycle as CreateCycleAction;
 use App\Jobs\RefreshCycleCache;
 use App\Models\Organization;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 
-class Create extends Component
+class CreateCycle extends Component
 {
     #[Locked]
     public Organization $organization;
@@ -38,7 +39,8 @@ class Create extends Component
     {
         $this->validate();
 
-        $cycle = (new CreateCycle(
+        $cycle = (new CreateCycleAction(
+            user: Auth::user(),
             organization: $this->organization,
             number: $this->cycleNumber,
             description: $this->description,

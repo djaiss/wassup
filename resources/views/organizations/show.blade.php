@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var array $url
+ */
+?>
+
 <x-app-layout :organization="$organization" :member="$member">
   <div class="py-12">
     <div class="mx-auto max-w-5xl px-2 sm:px-4">
@@ -140,7 +146,7 @@
           <p class="mb-8">{{ __('Think of cycles as time-boxed periods where everyone will work on what needs to be done.') }}</p>
 
           <div>
-            <x-secondary-button hover="true" href="{{ route('organizations.cycles.new', ['slug' => $organization->slug]) }}">
+            <x-secondary-button hover="true" href="{{ $url['cycle']['new'] }}">
               {{ __('Draft a new cycle') }}
             </x-secondary-button>
           </div>

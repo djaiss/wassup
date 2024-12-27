@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Exceptions\OrganizationMismatchException;
 use App\Models\Cycle;
+use App\Models\Organization;
+use App\Models\User;
 use Carbon\Carbon;
 
 class UpdateCycle
 {
     public function __construct(
+        public User $user,
         public Cycle $cycle,
         public string $description,
         public int $number,
@@ -21,9 +25,17 @@ class UpdateCycle
 
     public function execute(): Cycle
     {
+        $this->validate();
         $this->update();
 
         return $this->cycle;
+    }
+
+    private function validate(): void
+    {
+        if (! $this->user->isAdministratorOf($this->cycle->organization)) {
+            throw new OrganizationMismatchException('User is not an administrator of the organization.');
+        }
     }
 
     private function update(): void

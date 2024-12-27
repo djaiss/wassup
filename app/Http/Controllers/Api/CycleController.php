@@ -18,23 +18,21 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @group Organizations
  *
- * Organizations represent a company, or a group of people.
+ * @subgroup Cycles
  *
- * Organizations are created by users. Any user, regardless of their role, can
- * create an organization.
+ * Cycles represent a period of time in which people can set goals and check-in.
  *
- * Organizations are identified by a unique code. This code is used to let
- * other users join the organization.
+ * Cycles are managed by administrators.
  *
- * Organizations also have a slug. This slug is used to identify the organization
- * in the URL.
+ * Cycles can have a public URL. This URL is used to tell the world about the
+ * cycle.
  */
-class OrganizationController extends Controller
+class CycleController extends Controller
 {
     /**
-     * Create an organization.
+     * Create a cycle.
      *
-     * @bodyParam name string required The name of the organization. Max 255 characters. Example: Acme, Inc.
+     * @bodyParam name string required The name of the cycle. Max 255 characters. Example: Cycle 1
      *
      * @response 201 {
      *  "id": 1,
@@ -99,7 +97,16 @@ class OrganizationController extends Controller
      */
     public function update(Request $request): \App\Http\Resources\OrganizationResource
     {
-        $organization = $request->attributes->get('organization');
+        $id = $request->route()->parameter('organization');
+
+        try {
+            $organization = Organization::query()
+                ->whereHas('members', function ($query): void {
+                    $query->where('user_id', Auth::id());
+                })->findOrFail($id);
+        } catch (ModelNotFoundException) {
+            abort(401, 'There is no organization with this id in your account.');
+        }
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -131,7 +138,16 @@ class OrganizationController extends Controller
      */
     public function destroy(Request $request): JsonResponse
     {
-        $organization = $request->attributes->get('organization');
+        $id = $request->route()->parameter('organization');
+
+        try {
+            $organization = Organization::query()
+                ->whereHas('members', function ($query): void {
+                    $query->where('user_id', Auth::id());
+                })->findOrFail($id);
+        } catch (ModelNotFoundException) {
+            abort(401, 'There is no organization with this id in your account.');
+        }
 
         try {
             (new DestroyOrganization(

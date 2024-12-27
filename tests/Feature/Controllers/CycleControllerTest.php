@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Controllers;
 
+use App\Enums\Permission;
 use App\Models\Cycle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -27,10 +28,22 @@ class CycleControllerTest extends TestCase
     {
         $member = $this->createMember();
 
-        $this->actingAs($member->user)
+        $response = $this->actingAs($member->user)
             ->get('/organizations/' . $member->organization->slug . '/cycles/new')
             ->assertStatus(200)
             ->assertSee('Draft a new cycle');
+
+        $this->assertArrayHasKey('organization', $response);
+        $this->assertArrayHasKey('member', $response);
+
+        $this->assertEquals(
+            $member->organization->id,
+            $response['organization']['id']
+        );
+        $this->assertEquals(
+            $member->id,
+            $response['member']['id']
+        );
     }
 
     #[Test]
@@ -50,7 +63,7 @@ class CycleControllerTest extends TestCase
     #[Test]
     public function a_user_can_edit_a_cycle(): void
     {
-        $member = $this->createMember();
+        $member = $this->createMember(permission: Permission::Administrator);
         $cycle = Cycle::factory()->create([
             'organization_id' => $member->organization->id,
         ]);
@@ -75,7 +88,7 @@ class CycleControllerTest extends TestCase
     #[Test]
     public function a_user_can_delete_a_cycle(): void
     {
-        $member = $this->createMember();
+        $member = $this->createMember(permission: Permission::Administrator);
         $cycle = Cycle::factory()->create([
             'organization_id' => $member->organization->id,
         ]);

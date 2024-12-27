@@ -64,6 +64,11 @@ class OrganizationController extends Controller
             'cycle' => $cycle ? $data['cycle'] : null,
             'nextCycle' => $cycle ? $data['nextCycle'] : null,
             'previousCycle' => $cycle ? $data['previousCycle'] : null,
+            'url' => [
+                'cycle' => [
+                    'new' => route('organizations.cycles.new', ['slug' => $organization->slug]),
+                ],
+            ],
         ]);
     }
 }

@@ -9,6 +9,7 @@ use App\Actions\UpdateCycle;
 use App\Http\ViewModels\CycleViewModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CycleController extends Controller
@@ -60,6 +61,7 @@ class CycleController extends Controller
         $cycle = $request->attributes->get('cycle');
 
         $cycle = (new UpdateCycle(
+            user: Auth::user(),
             cycle: $cycle,
             description: $request->input('description'),
             number: $cycle->number,
@@ -93,6 +95,7 @@ class CycleController extends Controller
         $cycle = $request->attributes->get('cycle');
 
         (new DestroyCycle(
+            user: Auth::user(),
             cycle: $cycle,
         ))->execute();
 
