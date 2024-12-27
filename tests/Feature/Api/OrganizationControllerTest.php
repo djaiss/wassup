@@ -3,8 +3,6 @@
 namespace Tests\Feature\Api;
 
 use App\Enums\Permission;
-use App\Exceptions\OrganizationMismatchException;
-use App\Models\Gender;
 use App\Models\Organization;
 use App\Models\User;
 use Carbon\Carbon;

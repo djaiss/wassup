@@ -7,7 +7,6 @@ namespace App\Actions;
 use App\Exceptions\OrganizationMismatchException;
 use App\Models\Organization;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class UpdateOrganization

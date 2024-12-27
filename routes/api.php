@@ -16,5 +16,4 @@ Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
     Route::post('organizations', [OrganizationController::class, 'create']);
     Route::put('organizations/{organization}', [OrganizationController::class, 'update']);
     Route::delete('organizations/{organization}', [OrganizationController::class, 'destroy']);
-
 });
