@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Livewire\Organizations;
 
-use App\Livewire\Organizations\Create;
+use App\Livewire\Organizations\CreateOrganization;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,7 +10,7 @@ use Livewire\Livewire;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class CreateTest extends TestCase
+class CreateOrganizationTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,10 +19,10 @@ class CreateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $component = Livewire::actingAs($user)->test(Create::class);
+        $component = Livewire::actingAs($user)->test(CreateOrganization::class);
         $component->assertOk()->assertSee('Create a new organization');
 
-        $this->get('/organizations/new')->assertSeeLivewire(Create::class);
+        $this->get('/organizations/new')->assertSeeLivewire(CreateOrganization::class);
     }
 
     #[Test]
@@ -30,7 +30,7 @@ class CreateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $component = Livewire::actingAs($user)->test(Create::class);
+        $component = Livewire::actingAs($user)->test(CreateOrganization::class);
 
         $component->set('name', 'Dunder Mifflin');
         $component->call('store');
@@ -44,7 +44,7 @@ class CreateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $component = Livewire::actingAs($user)->test(Create::class);
+        $component = Livewire::actingAs($user)->test(CreateOrganization::class);
 
         $component->set('name', 'Ab');
         $component->call('store');

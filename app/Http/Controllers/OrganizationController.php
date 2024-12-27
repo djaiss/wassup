@@ -28,6 +28,10 @@ class OrganizationController extends Controller
 
         return view('organizations.index', [
             'organizations' => $organizations,
+            'url' => [
+                'new' => route('organizations.new'),
+                'join' => route('organizations.join'),
+            ],
         ]);
     }
 

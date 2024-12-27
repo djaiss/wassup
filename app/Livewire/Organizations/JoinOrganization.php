@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Organizations;
 
-use App\Actions\JoinOrganization;
+use App\Actions\JoinOrganization as JoinOrganizationAction;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class Join extends Component
+class JoinOrganization extends Component
 {
     #[Validate('required|string|min:3|max:255')]
     public string $name = '';
@@ -25,7 +25,7 @@ class Join extends Component
         $this->validate();
 
         try {
-            $organization = (new JoinOrganization(
+            $organization = (new JoinOrganizationAction(
                 name: $this->name,
                 code: $this->code,
             ))->execute();

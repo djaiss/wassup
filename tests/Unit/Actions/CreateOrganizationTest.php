@@ -4,9 +4,11 @@ namespace Tests\Unit\Actions;
 
 use App\Actions\CreateOrganization;
 use App\Enums\Permission;
+use App\Exceptions\NameAlreadyTakenException;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -24,7 +26,7 @@ class CreateOrganizationTest extends TestCase
     #[Test]
     public function it_cant_create_an_organization_if_the_name_is_not_unique(): void
     {
-        $this->expectException(QueryException::class);
+        $this->expectException(UniqueConstraintViolationException::class);
         Organization::factory()->create([
             'slug' => 'dunder-mifflin',
         ]);

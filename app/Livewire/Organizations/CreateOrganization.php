@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Organizations;
 
-use App\Actions\CreateOrganization;
+use App\Actions\CreateOrganization as CreateOrganizationAction;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class Create extends Component
+class CreateOrganization extends Component
 {
     #[Validate('required|string|min:3|max:255')]
     public string $name = '';
@@ -22,7 +22,7 @@ class Create extends Component
         $this->validate();
 
         try {
-            $organization = (new CreateOrganization(
+            $organization = (new CreateOrganizationAction(
                 name: $this->name,
             ))->execute();
 
