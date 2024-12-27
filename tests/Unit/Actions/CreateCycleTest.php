@@ -9,7 +9,6 @@ use App\Exceptions\CycleNumberMustBePositiveException;
 use App\Exceptions\CycleStartedAtMustBeBeforeEndedAtException;
 use App\Exceptions\OrganizationMismatchException;
 use App\Models\Cycle;
-use App\Models\Organization;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\Test;
