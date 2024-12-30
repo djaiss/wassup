@@ -1,6 +1,8 @@
-@props([
-  'url',
-])
+<?php
+/**
+ * @var array $url
+ */
+?>
 
 <div>
   <form wire:submit="store">

@@ -1,0 +1,19 @@
+meta {
+  name: List cycles
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://{{URL}}/organizations/7/cycles
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

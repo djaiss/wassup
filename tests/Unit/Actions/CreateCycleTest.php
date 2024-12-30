@@ -31,18 +31,18 @@ class CreateCycleTest extends TestCase
             description: 'Cycle 1',
             startedAt: now(),
             endedAt: now()->addDays(7),
-            isActive: false,
+            isActive: true,
             isPublic: true,
         ))->execute();
 
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
-            'organization_id' => $member->organization->id,
+            'organization_id' => $member->organization_id,
             'number' => 1,
             'description' => 'Cycle 1',
             'started_at' => '2018-01-01 00:00:00',
             'ended_at' => '2018-01-08 00:00:00',
-            'is_active' => 0,
+            'is_active' => 1,
             'is_public' => 1,
         ]);
 

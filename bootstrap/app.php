@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\CheckCycle;
+use App\Http\Middleware\CheckCycleAPI;
 use App\Http\Middleware\CheckOrganization;
 use App\Http\Middleware\CheckOrganizationAPI;
 use Illuminate\Foundation\Application;
@@ -21,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'organization' => CheckOrganization::class,
             'cycle' => CheckCycle::class,
             'organization.api' => CheckOrganizationAPI::class,
+            'cycle.api' => CheckCycleAPI::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -33,6 +33,7 @@ class CreateCycle
     {
         $this->validate();
         $this->create();
+        $this->toggle();
 
         return $this->cycle;
     }
@@ -70,5 +71,15 @@ class CreateCycle
             'is_active' => $this->isActive,
             'is_public' => $this->isPublic,
         ]);
+    }
+
+    private function toggle(): void
+    {
+        if ($this->isActive) {
+            (new ToggleCycle(
+                cycle: $this->cycle,
+                isActive: true,
+            ))->execute();
+        }
     }
 }

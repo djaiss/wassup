@@ -51,7 +51,7 @@ class UpdateOrganizationTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseHas('organizations', [
-            'id' => $member->organization->id,
+            'id' => $member->organization_id,
             'name' => $member->organization->name,
         ]);
     }

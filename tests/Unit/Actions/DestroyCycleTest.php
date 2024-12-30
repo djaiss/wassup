@@ -19,7 +19,7 @@ class DestroyCycleTest extends TestCase
     {
         $member = $this->createMember(permission: Permission::Administrator);
         $cycle = Cycle::factory()->create([
-            'organization_id' => $member->organization->id,
+            'organization_id' => $member->organization_id,
         ]);
 
         (new DestroyCycle(

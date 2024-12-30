@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var int $cycleNumber
+ * @var array $url
+ */
+?>
+
 <form wire:submit="store" class="grid grid-rows-2 gap-4 sm:grid-cols-6 sm:grid-rows-1">
   <div class="col-span-6 overflow-hidden rounded-md border border-gray-200 bg-white sm:col-start-1 sm:col-end-6 sm:rounded-lg dark:bg-gray-800">
     <div class="border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
@@ -27,7 +34,7 @@
       {{ __('Save') }}
     </x-button>
 
-    <x-secondary-button hover="true" href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" class="w-full">
+    <x-secondary-button hover="true" href="{{ $url['back'] }}" class="w-full">
       {{ __('Back') }}
     </x-secondary-button>
   </div>

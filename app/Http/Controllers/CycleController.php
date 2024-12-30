@@ -68,6 +68,7 @@ class CycleController extends Controller
             startedAt: $cycle->started_at,
             endedAt: $cycle->ended_at,
             isPublic: $cycle->is_public,
+            isActive: $cycle->is_active,
         ))->execute();
 
         return redirect()->route('organizations.cycles.show', [

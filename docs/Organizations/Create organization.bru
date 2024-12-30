@@ -1,0 +1,23 @@
+meta {
+  name: Create organization
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://{{URL}}/organizations?name=Dunder
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: Dunder
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

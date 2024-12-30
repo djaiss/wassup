@@ -10,6 +10,7 @@ class ToggleCycle
 {
     public function __construct(
         public Cycle $cycle,
+        public bool $isActive,
     ) {
     }
 
@@ -23,12 +24,7 @@ class ToggleCycle
 
     private function toggle(): void
     {
-        $this->cycle->is_active = ! $this->cycle->is_active;
-        if ($this->cycle->is_active) {
-            $this->cycle->started_at = now()->toDateTimeString();
-        } else {
-            $this->cycle->ended_at = now()->toDateTimeString();
-        }
+        $this->cycle->is_active = $this->isActive;
         $this->cycle->save();
     }
 

@@ -21,7 +21,7 @@ class OrganizationController extends Controller
             ->with('organization')
             ->get()
             ->map(fn (Member $member): array => [
-                'id' => $member->organization->id,
+                'id' => $member->organization_id,
                 'name' => $member->organization->name,
                 'slug' => $member->organization->slug,
             ]);

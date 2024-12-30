@@ -55,7 +55,7 @@ class OrganizationControllerTest extends TestCase
 
         Sanctum::actingAs($member->user);
 
-        $response = $this->json('PUT', '/api/organizations/' . $member->organization->id, [
+        $response = $this->json('PUT', '/api/organizations/' . $member->organization_id, [
             'name' => 'Dunder Mifflin',
         ]);
 
@@ -63,7 +63,7 @@ class OrganizationControllerTest extends TestCase
 
         $this->assertEquals(
             [
-                'id' => $member->organization->id,
+                'id' => $member->organization_id,
                 'object' => 'organization',
                 'name' => 'Dunder Mifflin',
                 'slug' => 'dunder-mifflin',
@@ -75,7 +75,7 @@ class OrganizationControllerTest extends TestCase
         );
 
         $this->assertDatabaseHas('organizations', [
-            'id' => $member->organization->id,
+            'id' => $member->organization_id,
             'name' => 'Dunder Mifflin',
         ]);
     }
@@ -86,7 +86,7 @@ class OrganizationControllerTest extends TestCase
         $member = $this->createMember(permission: Permission::Member);
         Sanctum::actingAs($member->user);
 
-        $response = $this->json('PUT', '/api/organizations/' . $member->organization->id, [
+        $response = $this->json('PUT', '/api/organizations/' . $member->organization_id, [
             'name' => 'Dunder Mifflin',
         ]);
 
@@ -100,7 +100,7 @@ class OrganizationControllerTest extends TestCase
 
         Sanctum::actingAs($member->user);
 
-        $response = $this->json('DELETE', '/api/organizations/' . $member->organization->id);
+        $response = $this->json('DELETE', '/api/organizations/' . $member->organization_id);
 
         $response->assertStatus(200);
 
@@ -112,7 +112,7 @@ class OrganizationControllerTest extends TestCase
         );
 
         $this->assertDatabaseMissing('organizations', [
-            'id' => $member->organization->id,
+            'id' => $member->organization_id,
         ]);
     }
 
@@ -139,13 +139,13 @@ class OrganizationControllerTest extends TestCase
 
         Sanctum::actingAs($member->user);
 
-        $response = $this->json('GET', '/api/organizations/' . $member->organization->id);
+        $response = $this->json('GET', '/api/organizations/' . $member->organization_id);
 
         $response->assertStatus(200);
 
         $this->assertEquals(
             [
-                'id' => $member->organization->id,
+                'id' => $member->organization_id,
                 'object' => 'organization',
                 'name' => $member->organization->name,
                 'slug' => $member->organization->slug,

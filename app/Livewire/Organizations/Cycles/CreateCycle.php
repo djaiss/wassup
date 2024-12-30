@@ -30,8 +30,10 @@ class CreateCycle extends Component
         $this->cycleNumber = $this->organization->cycles->max('number') + 1;
 
         return view('livewire.organizations.cycles.create', [
-            'organization' => $this->organization,
             'cycleNumber' => $this->cycleNumber,
+            'url' => [
+                'back' => route('organizations.show', ['slug' => $this->organization->slug]),
+            ],
         ]);
     }
 

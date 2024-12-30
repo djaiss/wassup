@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Organizations\Cycles;
 
-use App\Actions\ToggleCycle;
+use App\Actions\ToggleCycle as ToggleCycleAction;
 use App\Cache\CycleCache;
 use App\Jobs\RefreshCycleCache;
 use App\Models\Cycle;
@@ -10,7 +10,7 @@ use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 
-class Toggle extends Component
+class ToggleCycle extends Component
 {
     #[Locked]
     public Cycle $cycle;
@@ -22,8 +22,9 @@ class Toggle extends Component
 
     public function toggle(): Redirector
     {
-        (new ToggleCycle(
+        (new ToggleCycleAction(
             cycle: $this->cycle,
+            isActive: ! $this->cycle->is_active,
         ))->execute();
 
         // we need to manually refresh the cache for this cycle since it's

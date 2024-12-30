@@ -26,7 +26,7 @@ class DestroyOrganizationTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseMissing('organizations', [
-            'id' => $member->organization->id,
+            'id' => $member->organization_id,
         ]);
     }
 
@@ -61,7 +61,7 @@ class DestroyOrganizationTest extends TestCase
         ))->execute();
 
         $this->assertDatabaseHas('organizations', [
-            'id' => $member->organization->id,
+            'id' => $member->organization_id,
         ]);
     }
 }
