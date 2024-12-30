@@ -3,7 +3,6 @@
 namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\CreateCycle as CreateCycleAction;
-use App\Jobs\RefreshCycleCache;
 use App\Models\Organization;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +16,7 @@ class CreateCycle extends Component
     #[Locked]
     public Organization $organization;
 
-    #[Validate('required|integer|min:1|max:1000')]
+    #[Locked]
     public int $cycleNumber = 0;
 
     #[Validate('required|string|min:3|max:100000')]
@@ -51,8 +50,6 @@ class CreateCycle extends Component
             isActive: false,
             isPublic: false,
         ))->execute();
-
-        RefreshCycleCache::dispatch($this->organization);
 
         return redirect()->route('organizations.cycles.show', [
             'slug' => $this->organization->slug,

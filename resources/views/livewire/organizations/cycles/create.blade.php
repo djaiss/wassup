@@ -13,14 +13,6 @@
       <p class="text-gray-500 dark:text-gray-400">{{ __('Think of cycles as time-boxed periods where everyone will work on what needs to be done.') }}</p>
     </div>
 
-    <div class="flex">
-      <div class="px-6 pt-6">
-        <x-label for="number" :value="__('Cycle number')" class="mb-1" />
-        <x-input id="number" class="w-full" type="number" :min="$cycleNumber" max="1000" wire:model.defer="cycleNumber" />
-        <x-input-error for="name" class="mt-2" />
-      </div>
-    </div>
-
     <div class="p-6">
       <x-label for="description" :value="__('Tell your team what this cycle is going to be about')" class="mb-1" />
       <x-textarea wire:model="description" id="description" class="w-full" :height="'min-h-[600px]'" required />

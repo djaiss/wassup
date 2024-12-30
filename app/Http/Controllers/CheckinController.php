@@ -18,7 +18,6 @@ class CheckinController extends Controller
         $member = $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
-        $data = CycleViewModel::show($cycle);
         $weeks = CheckinViewModel::weekSelector($cycle);
 
         $members = $organization->members()->with('user')->get();
@@ -29,9 +28,6 @@ class CheckinController extends Controller
             'members' => $members,
             'weeks' => $weeks,
             'day' => Carbon::now(),
-            'cycle' => $data['cycle'],
-            'nextCycle' => $data['nextCycle'],
-            'previousCycle' => $data['previousCycle'],
         ]);
     }
 }

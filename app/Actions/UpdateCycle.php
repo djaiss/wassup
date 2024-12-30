@@ -41,11 +41,6 @@ class UpdateCycle
             throw new OrganizationMismatchException('User is not an administrator of the organization.');
         }
 
-        // if the cycle number is already taken, throw an exception
-        if (Cycle::where('organization_id', $this->cycle->organization_id)->where('number', $this->number)->exists()) {
-            throw new CycleNumberAlreadyTakenException();
-        }
-
         // if the cycle number is not a positive integer, throw an exception
         if ($this->number <= 0) {
             throw new CycleNumberMustBePositiveException();

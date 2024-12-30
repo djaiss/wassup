@@ -76,32 +76,6 @@ class UpdateCycleTest extends TestCase
     }
 
     #[Test]
-    public function it_throws_an_exception_if_the_cycle_number_is_already_taken(): void
-    {
-        $this->expectException(CycleNumberAlreadyTakenException::class);
-
-        $member = $this->createMember(permission: Permission::Administrator);
-        $cycle = Cycle::factory()->create([
-            'organization_id' => $member->organization_id,
-        ]);
-        Cycle::factory()->create([
-            'organization_id' => $member->organization_id,
-            'number' => 1,
-        ]);
-
-        (new UpdateCycle(
-            user: $member->user,
-            cycle: $cycle,
-            number: 1,
-            description: 'Cycle 1',
-            startedAt: now(),
-            endedAt: now()->addDays(7),
-            isPublic: true,
-            isActive: true,
-        ))->execute();
-    }
-
-    #[Test]
     public function it_throws_an_exception_if_the_cycle_number_is_not_a_positive_integer(): void
     {
         $this->expectException(CycleNumberMustBePositiveException::class);

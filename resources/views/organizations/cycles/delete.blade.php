@@ -1,8 +1,17 @@
+<?php
+/**
+ * @var \App\Models\Organization $organization
+ * @var \App\Models\Member $member
+ * @var \App\Models\Cycle $cycle
+ * @var array $url
+ */
+?>
+
 <x-app-layout :organization="$organization" :member="$member">
   <div class="py-12">
     <div class="mx-auto max-w-xl px-2 sm:px-0">
       <div class="rounded-md border border-gray-200 bg-white sm:rounded-lg dark:bg-gray-800">
-        <form action="{{ route('organizations.cycles.destroy', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" method="POST">
+        <form action="{{ $url['cycle']['destroy'] }}" method="POST">
           @csrf
           @method('DELETE')
           <div class="border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
@@ -12,7 +21,7 @@
           </div>
 
           <div class="flex justify-between p-5">
-            <x-secondary-button hover="true" href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
+            <x-secondary-button hover="true" href="{{ $url['cycle']['show'] }}">
               {{ __('Cancel') }}
             </x-secondary-button>
 

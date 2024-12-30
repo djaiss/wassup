@@ -1,5 +1,8 @@
 <?php
 /**
+ * @var Organization $organization
+ * @var Member $member
+ * @var Cycle $cycle
  * @var array $url
  */
 ?>
@@ -73,7 +76,7 @@
               </div>
 
               <div class="flex items-center">
-                <x-secondary-button hover="true" href="{{ route('organizations.cycles.edit', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
+                <x-secondary-button hover="true" href="{{ $url['cycle']['edit'] }}">
                   {{ __('Edit') }}
                 </x-secondary-button>
               </div>
@@ -91,7 +94,7 @@
               </div>
 
               <div class="flex items-center">
-                <x-secondary-button hover="true" href="{{ route('organizations.cycles.delete', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}">
+                <x-secondary-button hover="true" href="{{ $url['cycle']['delete'] }}">
                   {{ __('Delete') }}
                 </x-secondary-button>
               </div>
@@ -100,42 +103,7 @@
         </div>
 
         <!-- cycle selector -->
-        <div class="grid grid-cols-1 sm:grid-cols-3">
-          <!-- previous cycle -->
-          <div class="flex items-center">
-            @if ($previousCycle)
-              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $previousCycle->number]) }}" wire:navigate.hover class="mr-2 rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
-                <x-lucide-arrow-left class="h-5 w-5" />
-              </a>
-
-              <div class="flex flex-col">
-                <p class="text-sm">{{ __('Previous cycle') }}</p>
-                <p class="text-xs text-gray-600">{{ __('Cycle #:cycleNumber', ['cycleNumber' => $previousCycle->number]) }}</p>
-              </div>
-            @endif
-          </div>
-
-          <!-- draft new cycle -->
-          <div class="place-self-center">
-            <x-secondary-button hover="true" href="{{ route('organizations.cycles.new', ['slug' => $organization->slug]) }}">
-              {{ __('Draft new cycle') }}
-            </x-secondary-button>
-          </div>
-
-          <!-- next cycle -->
-          <div class="flex items-center place-self-end">
-            @if ($nextCycle)
-              <div class="mr-2 flex flex-col">
-                <p class="text-sm">{{ __('Next cycle') }}</p>
-                <p class="text-xs text-gray-600">{{ __('Cycle #:cycleNumber', ['cycleNumber' => $nextCycle->number]) }}</p>
-              </div>
-
-              <a href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $nextCycle->number]) }}" wire:navigate.hover class="rounded-full border bg-white p-3 hover:border-gray-400 hover:bg-gray-100">
-                <x-lucide-arrow-right class="h-5 w-5" />
-              </a>
-            @endif
-          </div>
-        </div>
+        <livewire:organizations.cycles.navigate-cycle lazy :cycle="$cycle" />
       @else
         <!-- blank state -->
         <div class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-10">

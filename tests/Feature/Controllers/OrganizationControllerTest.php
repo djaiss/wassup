@@ -3,6 +3,7 @@
 namespace Tests\Feature\Controllers;
 
 use App\Enums\Permission;
+use App\Models\Cycle;
 use App\Models\Member;
 use App\Models\Organization;
 use App\Models\User;
@@ -96,5 +97,45 @@ class OrganizationControllerTest extends TestCase
             ->get('/organizations/new')
             ->assertStatus(200)
             ->assertSee('Create a new organization');
+    }
+
+    #[Test]
+    public function a_user_can_see_the_default_active_cycle_screen(): void
+    {
+        $member = $this->createMember();
+        $cycle = Cycle::factory()->create([
+            'organization_id' => $member->organization_id,
+            'is_active' => true,
+        ]);
+
+        $response = $this->actingAs($member->user)
+            ->get('/organizations/' . $member->organization->slug)
+            ->assertStatus(200)
+            ->assertSee('Cycle #' . $cycle->number);
+
+        $this->assertArrayHasKey('organization', $response);
+        $this->assertArrayHasKey('member', $response);
+        $this->assertArrayHasKey('cycle', $response);
+        $this->assertArrayHasKey('url', $response);
+        $this->assertEquals(
+            $member->organization_id,
+            $response['organization']['id']
+        );
+        $this->assertEquals(
+            $member->id,
+            $response['member']['id']
+        );
+        $this->assertEquals(
+            $cycle->id,
+            $response['cycle']['id']
+        );
+        $this->assertEquals(
+            [
+                'new' => env('APP_URL') . '/organizations/' . $member->organization->slug . '/cycles/new',
+                'edit' => env('APP_URL') . '/organizations/' . $member->organization->slug . '/cycles/' . $cycle->number . '/edit',
+                'delete' => env('APP_URL') . '/organizations/' . $member->organization->slug . '/cycles/' . $cycle->number . '/delete',
+            ],
+            $response['url']['cycle']
+        );
     }
 }

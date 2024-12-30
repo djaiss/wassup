@@ -22,7 +22,6 @@ class WeekController extends Controller
         $cycleStart = $cycle->started_at;
         $weekStart = $cycleStart->copy()->addWeeks($weekNumber - 1)->startOfWeek();
 
-        $data = CycleViewModel::show($cycle);
         $weeks = CheckinViewModel::weekSelector($cycle);
         $members = $organization->members()->with('user')->get();
 
@@ -31,9 +30,6 @@ class WeekController extends Controller
             'member' => $member,
             'members' => $members,
             'weeks' => $weeks,
-            'cycle' => $data['cycle'],
-            'nextCycle' => $data['nextCycle'],
-            'previousCycle' => $data['previousCycle'],
             'day' => $weekStart,
         ]);
     }

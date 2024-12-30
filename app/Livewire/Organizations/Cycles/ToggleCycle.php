@@ -27,16 +27,6 @@ class ToggleCycle extends Component
             isActive: ! $this->cycle->is_active,
         ))->execute();
 
-        // we need to manually refresh the cache for this cycle since it's
-        // the one that will be immediately shown to the user
-        // then, we'll need to refresh the other caches
-        CycleCache::make(
-            organization: $this->cycle->organization,
-            cycle: $this->cycle,
-        )->refresh();
-
-        RefreshCycleCache::dispatch($this->cycle->organization);
-
         return redirect()->route('organizations.cycles.show', [
             'slug' => $this->cycle->organization->slug,
             'cycle' => $this->cycle->number,

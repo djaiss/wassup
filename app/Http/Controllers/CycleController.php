@@ -31,14 +31,17 @@ class CycleController extends Controller
         $member = $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
-        $data = CycleViewModel::show($cycle);
-
         return view('organizations.show', [
             'organization' => $organization,
             'member' => $member,
-            'cycle' => $data['cycle'],
-            'nextCycle' => $data['nextCycle'],
-            'previousCycle' => $data['previousCycle'],
+            'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'new' => route('organizations.cycles.new', ['slug' => $organization->slug]),
+                    'edit' => $cycle ? route('organizations.cycles.edit', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                    'delete' => $cycle ? route('organizations.cycles.delete', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                ],
+            ],
         ]);
     }
 
@@ -52,6 +55,12 @@ class CycleController extends Controller
             'organization' => $organization,
             'member' => $member,
             'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'show' => route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                    'update' => route('organizations.cycles.update', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                ],
+            ],
         ]);
     }
 
@@ -87,6 +96,12 @@ class CycleController extends Controller
             'organization' => $organization,
             'member' => $member,
             'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'show' => route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                    'destroy' => route('organizations.cycles.destroy', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                ],
+            ],
         ]);
     }
 

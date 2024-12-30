@@ -33,7 +33,8 @@ class CycleController extends Controller
      * Cycles can have a public URL. This URL is used to tell the world about the
      * cycle.
      *
-     * @bodyParam number integer required The number of the cycle. Example: 1
+     * The cycle number is automatically generated based on the previous cycles.
+     *
      * @bodyParam description string required The description of the cycle. Example: This is a description of the cycle.
      * @bodyParam started_at string The start date of the cycle, in ISO 8601 format (YYYY-MM-DD). Example: 2024-01-01
      * @bodyParam ended_at string The end date of the cycle, in ISO 8601 format (YYYY-MM-DD). Example: 2024-01-01
@@ -69,7 +70,6 @@ class CycleController extends Controller
         $organization = $request->attributes->get('organization');
 
         $validated = $request->validate([
-            'number' => 'required|integer|min:1',
             'description' => 'required|string|max:4294967295',
             'started_at' => 'required|string',
             'ended_at' => 'required|string',
@@ -77,10 +77,12 @@ class CycleController extends Controller
             'is_public' => 'required|boolean',
         ]);
 
+        $cycleNumber = $organization->cycles->max('number') + 1;
+
         $cycle = (new CreateCycle(
             user: Auth::user(),
             organization: $organization,
-            number: $validated['number'],
+            number: $cycleNumber,
             description: $validated['description'],
             startedAt: Carbon::parse($validated['started_at']),
             endedAt: Carbon::parse($validated['ended_at']),
@@ -96,10 +98,11 @@ class CycleController extends Controller
      *
      * Only administrators can update a cycle.
      *
+     * Cycle numbers are immutable.
+     *
      * @urlParam organization required The id of the organization. Example: 1
      * @urlParam cycle required The number of the cycle. Please note that this is not the id of the cycle. Example: 1
      *
-     * @bodyParam number integer The number of the cycle. Example: 1
      * @bodyParam description string required The description of the cycle. Max 4294967295 characters. Example: This is a description of the cycle.
      * @bodyParam started_at string The start date of the cycle, in ISO 8601 format (YYYY-MM-DD). Example: 2024-01-01
      * @bodyParam ended_at string The end date of the cycle, in ISO 8601 format (YYYY-MM-DD). Example: 2024-01-01
@@ -135,7 +138,6 @@ class CycleController extends Controller
         $cycle = $request->attributes->get('cycle');
 
         $validated = $request->validate([
-            'number' => 'required|integer|min:1',
             'description' => 'required|string|max:4294967295',
             'started_at' => 'required|string',
             'ended_at' => 'required|string',
@@ -148,7 +150,7 @@ class CycleController extends Controller
                 user: Auth::user(),
                 cycle: $cycle,
                 description: $validated['description'],
-                number: $validated['number'],
+                number: $cycle->number,
                 startedAt: Carbon::parse($validated['started_at']),
                 endedAt: Carbon::parse($validated['ended_at']),
                 isActive: $validated['is_active'],

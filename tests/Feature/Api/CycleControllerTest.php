@@ -22,7 +22,6 @@ class CycleControllerTest extends TestCase
         Sanctum::actingAs($member->user);
 
         $response = $this->json('POST', '/api/organizations/' . $member->organization_id . '/cycles', [
-            'number' => 1,
             'description' => 'This is a description of the cycle.',
             'started_at' => '2024-01-01',
             'ended_at' => '2024-01-01',
@@ -67,7 +66,6 @@ class CycleControllerTest extends TestCase
         Sanctum::actingAs($member->user);
 
         $response = $this->json('PUT', '/api/organizations/' . $member->organization_id . '/cycles/' . $cycle->number, [
-            'number' => 2,
             'description' => 'This is a description of the cycle.',
             'started_at' => '2024-01-01',
             'ended_at' => '2024-01-01',
@@ -81,7 +79,7 @@ class CycleControllerTest extends TestCase
             [
                 'id' => $cycle->id,
                 'object' => 'cycle',
-                'number' => 2,
+                'number' => 1,
                 'description' => 'This is a description of the cycle.',
                 'started_at' => 1704067200,
                 'ended_at' => 1704067200,
@@ -95,7 +93,7 @@ class CycleControllerTest extends TestCase
 
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
-            'number' => 2,
+            'number' => 1,
         ]);
     }
 

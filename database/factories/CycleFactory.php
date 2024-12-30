@@ -23,8 +23,8 @@ final class CycleFactory extends Factory
             'organization_id' => Organization::factory(),
             'number' => $this->faker->randomNumber(),
             'description' => $this->faker->sentence(),
-            'started_at' => $this->faker->date(),
-            'ended_at' => $this->faker->date(),
+            'started_at' => $startDate = $this->faker->date(),
+            'ended_at' => date('Y-m-d', strtotime($startDate . ' + 30 days')),
             'is_public' => $this->faker->boolean(),
             'is_active' => $this->faker->boolean(),
         ];
