@@ -13,20 +13,29 @@
         <!-- Navigation Links -->
         @if ($organization->id > 0)
           <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-            <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show')">
-              {{ __('Cycles') }}
+            <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show') || request()->routeIs('organizations.cycles.*') || request()->routeIs('organizations.goals.*') || request()->routeIs('organizations.checkins.*')">
+              <x-lucide-refresh-ccw class="mr-2 h-3 w-3" />
+              <span>{{ __('Dashboard') }}</span>
+            </x-nav-link>
+
+            <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show') || request()->routeIs('organizations.cycles.*') || request()->routeIs('organizations.goals.*') || request()->routeIs('organizations.checkins.*')">
+              <x-lucide-refresh-ccw class="mr-2 h-3 w-3" />
+              <span>{{ __('Cycles') }}</span>
             </x-nav-link>
 
             <x-nav-link href="{{ route('organizations.show', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.show')">
+              <x-lucide-users class="mr-2 h-3 w-3" />
               {{ __('Projects') }}
             </x-nav-link>
 
             <x-nav-link href="{{ route('organizations.people.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.people.index')">
+              <x-lucide-users class="mr-2 h-3 w-3" />
               {{ __('People') }}
             </x-nav-link>
 
             @if ($member->permission === 'administrator')
               <x-nav-link href="{{ route('organizations.settings.index', ['slug' => $organization->slug]) }}" :active="request()->routeIs('organizations.settings.index')">
+                <x-lucide-settings class="mr-2 h-3 w-3" />
                 {{ __('Settings') }}
               </x-nav-link>
             @endif
@@ -93,7 +102,7 @@
             <x-slot name="trigger">
               @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <button class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-none">
-                  <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                  <img class="h-8 w-8 rounded-full object-cover p-[0.1875rem] shadow ring-1 ring-slate-900/10" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                 </button>
               @else
                 <span class="inline-flex rounded-md">

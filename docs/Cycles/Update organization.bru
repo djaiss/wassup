@@ -1,0 +1,23 @@
+meta {
+  name: Update organization
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://{{URL}}/organizations/6?name=Dundersse
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: Dundersse
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,13 +20,17 @@ class OrganizationController extends Controller
             ->with('organization')
             ->get()
             ->map(fn (Member $member): array => [
-                'id' => $member->organization->id,
+                'id' => $member->organization_id,
                 'name' => $member->organization->name,
                 'slug' => $member->organization->slug,
             ]);
 
         return view('organizations.index', [
             'organizations' => $organizations,
+            'url' => [
+                'new' => route('organizations.new'),
+                'join' => route('organizations.join'),
+            ],
         ]);
     }
 
@@ -35,7 +38,6 @@ class OrganizationController extends Controller
     {
         $organization = $request->attributes->get('organization');
         $member = $request->attributes->get('member');
-        $data = [];
 
         // get the latest cycle that is active
         // if there are no active cycles, get the latest one
@@ -50,16 +52,17 @@ class OrganizationController extends Controller
                 ->first();
         }
 
-        if ($cycle) {
-            $data = CycleViewModel::show($cycle);
-        }
-
         return view('organizations.show', [
             'organization' => $organization,
             'member' => $member,
-            'cycle' => $cycle ? $data['cycle'] : null,
-            'nextCycle' => $cycle ? $data['nextCycle'] : null,
-            'previousCycle' => $cycle ? $data['previousCycle'] : null,
+            'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'new' => route('organizations.cycles.new', ['slug' => $organization->slug]),
+                    'edit' => $cycle ? route('organizations.cycles.edit', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                    'delete' => $cycle ? route('organizations.cycles.delete', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                ],
+            ],
         ]);
     }
 }

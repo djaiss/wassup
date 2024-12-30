@@ -162,6 +162,7 @@ class SetupDummyAccount extends Command
 
         foreach (range(1, 5) as $number) {
             (new CreateCycle(
+                user: $this->user,
                 organization: $this->organization,
                 number: $number,
                 description: $this->faker->sentence,

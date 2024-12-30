@@ -1,7 +1,7 @@
 <div>
   <div class="mb-1 flex items-center justify-between">
     <div class="flex items-center">
-      <img class="mr-3 h-6 w-6 rounded-full border border-gray-200 object-cover" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
+      <img class="mr-3 h-6 w-6 rounded-full border border-gray-200 object-cover shadow ring-1 ring-slate-900/10" src="{{ $member->user->profile_photo_url }}" alt="{{ $member->user->name }}" />
       <span class="text-sm font-medium">{{ $member->user->name }}</span>
     </div>
 
@@ -16,9 +16,24 @@
   <div class="mb-8 rounded-lg border border-gray-200 bg-white">
     @forelse ($goals as $goal)
       @if ($editedGoalId !== $goal['id'])
-        <div class="mb-1 flex items-center justify-between rounded-t-lg border-b border-gray-200 px-4 py-2 last:mb-0 last:rounded-b-lg last:border-b-0 hover:bg-cyan-50">
+        <div class="flex items-center justify-between rounded-t-lg border-b border-gray-200 px-4 py-2 last:mb-0 last:rounded-b-lg last:border-b-0 hover:bg-cyan-50">
           <div class="flex flex-col space-y-1">
-            <div>{{ $goal['title'] }}</div>
+            <div class="flex items-center">
+              {{ $goal['title'] }}
+
+              @if ($goal['description'])
+                <div x-data="{ showDescription: false }" class="relative">
+                  <x-lucide-notebook-text @mouseenter="showDescription = true" @mouseleave="showDescription = false" class="ml-2 h-4 w-4 flex-shrink-0 cursor-help text-gray-400 hover:text-gray-600" />
+
+                  <!-- Description Modal/Popup -->
+                  <div x-show="showDescription" x-transition:enter="transition duration-100 ease-out" x-transition:enter-start="scale-95 opacity-0" x-transition:enter-end="scale-100 opacity-100" x-transition:leave="transition duration-75 ease-in" x-transition:leave-start="scale-100 opacity-100" x-transition:leave-end="scale-95 opacity-0" class="absolute left-0 z-50 mt-2 w-96 rounded-md bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5" x-cloak>
+                    <div class="text-sm text-gray-600">
+                      <p class="whitespace-pre-wrap">{{ $goal['description'] }}</p>
+                    </div>
+                  </div>
+                </div>
+              @endif
+            </div>
             <div class="flex">
               <div class="flex items-center">
                 <x-lucide-folder-kanban class="mr-2 h-4 w-4 flex-shrink-0 text-gray-400" />
@@ -97,7 +112,7 @@
         <!-- when description is not added -->
         <div x-show="!addDescription" class="flex flex-col">
           <div class="flex">
-            <x-input wire:model="title" wire:keydown.esc="resetEdit" type="text" class="mr-2 block w-full" data-1p-ignore required autofocus autocomplete="title" />
+            <x-input wire:model="title" wire:keydown.esc="toggleAddMode" type="text" class="mr-2 block w-full" data-1p-ignore required autofocus autocomplete="title" />
 
             <x-button wire:loading.attr="disabled">
               {{ __('Save') }}

@@ -1,7 +1,16 @@
+<?php
+/**
+ * @var \App\Models\Organization $organization
+ * @var \App\Models\Member $member
+ * @var \App\Models\Cycle $cycle
+ * @var array $url
+ */
+?>
+
 <x-app-layout :organization="$organization" :member="$member">
   <div class="py-12">
     <div class="mx-auto max-w-5xl px-2 sm:px-0">
-      <form action="{{ route('organizations.cycles.update', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" method="POST" class="grid grid-rows-2 gap-4 sm:grid-cols-6 sm:grid-rows-1">
+      <form action="{{ $url['cycle']['update'] }}" method="POST" class="grid grid-rows-2 gap-4 sm:grid-cols-6 sm:grid-rows-1">
         @csrf
         @method('PUT')
 
@@ -25,7 +34,7 @@
             {{ __('Save') }}
           </x-button>
 
-          <x-secondary-button hover="true" href="{{ route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]) }}" class="w-full">
+          <x-secondary-button hover="true" href="{{ $url['cycle']['show'] }}" class="w-full">
             {{ __('Back') }}
           </x-secondary-button>
         </div>

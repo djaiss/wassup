@@ -10,6 +10,7 @@ class ToggleCycle
 {
     public function __construct(
         public Cycle $cycle,
+        public bool $isActive,
     ) {
     }
 
@@ -23,7 +24,7 @@ class ToggleCycle
 
     private function toggle(): void
     {
-        $this->cycle->is_active = ! $this->cycle->is_active;
+        $this->cycle->is_active = $this->isActive;
         $this->cycle->save();
     }
 

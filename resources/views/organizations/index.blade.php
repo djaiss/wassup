@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \Illuminate\Support\Collection $organizations
+ * @var array $url
+ */
+?>
+
 <x-app-layout>
   <div class="py-3 sm:py-12">
     <div class="mx-auto max-w-xl px-2 sm:px-0">
@@ -21,7 +28,7 @@
             </div>
           </div>
         @empty
-          <div class="flex border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent">
+          <div class="flex border-b border-gray-200 bg-white p-6 lg:p-8 dark:border-gray-700 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent" id="blank-state">
             <img src="/img/welcome.png" class="mr-6 h-28" />
             <div>
               <h1 class="mb-6 text-2xl font-medium text-gray-900 dark:text-white">{{ __('Welcome to your Wassup account!') }}</h1>
@@ -29,12 +36,12 @@
             </div>
           </div>
 
-          <div class="flex flex-col items-center justify-center">
-            <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="mt-4">{{ __('Create an organization') }}</x-secondary-button>
+          <div class="flex flex-col items-center justify-center space-y-2 p-6">
+            <x-secondary-button hover="true" href="{{ route('organizations.new') }}" class="">{{ __('Create an organization') }}</x-secondary-button>
 
-            <span class="my-5 text-gray-500">{{ __('or') }}</span>
+            <span class="text-gray-500">{{ __('or') }}</span>
 
-            <x-secondary-button hover="true" href="{{ route('organizations.join') }}" class="mb-4">{{ __('Join an existing organization') }}</x-secondary-button>
+            <x-secondary-button hover="true" href="{{ route('organizations.join') }}" class="">{{ __('Join an existing organization') }}</x-secondary-button>
           </div>
         @endforelse
       </div>

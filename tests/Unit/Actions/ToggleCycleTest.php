@@ -24,11 +24,22 @@ class ToggleCycleTest extends TestCase
 
         $cycle = (new ToggleCycle(
             cycle: $cycle,
+            isActive: true,
         ))->execute();
 
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
             'is_active' => true,
+        ]);
+
+        $cycle = (new ToggleCycle(
+            cycle: $cycle,
+            isActive: false,
+        ))->execute();
+
+        $this->assertDatabaseHas('cycles', [
+            'id' => $cycle->id,
+            'is_active' => false,
         ]);
 
         $this->assertInstanceOf(

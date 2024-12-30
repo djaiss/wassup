@@ -1,0 +1,19 @@
+meta {
+  name: Retrieve current cycle
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://{{URL}}/organizations/7/cycles/active
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: {{token}}
+}

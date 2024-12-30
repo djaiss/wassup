@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\JoinOrganizationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OrganizationSettingsController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\WeekController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,7 +38,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::delete('organizations/{slug}/cycles/{cycle}', [CycleController::class, 'destroy'])->name('organizations.cycles.destroy');
 
             // goals
-            Route::get('organizations/{slug}/cycles/{cycle}/goals', [GoalController::class, 'index'])->name('goals.index');
+            Route::get('organizations/{slug}/cycles/{cycle}/goals', [GoalController::class, 'index'])->name('organizations.goals.index');
+
+            // check-ins
+            Route::get('organizations/{slug}/cycles/{cycle}/check-ins', [CheckinController::class, 'index'])->name('organizations.checkins.index');
+            Route::get('organizations/{slug}/cycles/{cycle}/check-ins/weeks/{week}', [WeekController::class, 'show'])->name('organizations.checkins.weeks.show');
         });
 
         Route::get('organizations/{slug}/people', [PeopleController::class, 'index'])->name('organizations.people.index');

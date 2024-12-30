@@ -6,9 +6,9 @@ namespace App\Http\Controllers;
 
 use App\Actions\DestroyCycle;
 use App\Actions\UpdateCycle;
-use App\Http\ViewModels\CycleViewModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CycleController extends Controller
@@ -30,14 +30,17 @@ class CycleController extends Controller
         $member = $request->attributes->get('member');
         $cycle = $request->attributes->get('cycle');
 
-        $data = CycleViewModel::show($cycle);
-
         return view('organizations.show', [
             'organization' => $organization,
             'member' => $member,
-            'cycle' => $data['cycle'],
-            'nextCycle' => $data['nextCycle'],
-            'previousCycle' => $data['previousCycle'],
+            'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'new' => route('organizations.cycles.new', ['slug' => $organization->slug]),
+                    'edit' => $cycle ? route('organizations.cycles.edit', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                    'delete' => $cycle ? route('organizations.cycles.delete', ['slug' => $organization->slug, 'cycle' => $cycle->number]) : null,
+                ],
+            ],
         ]);
     }
 
@@ -51,6 +54,12 @@ class CycleController extends Controller
             'organization' => $organization,
             'member' => $member,
             'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'show' => route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                    'update' => route('organizations.cycles.update', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                ],
+            ],
         ]);
     }
 
@@ -60,12 +69,14 @@ class CycleController extends Controller
         $cycle = $request->attributes->get('cycle');
 
         $cycle = (new UpdateCycle(
+            user: Auth::user(),
             cycle: $cycle,
             description: $request->input('description'),
             number: $cycle->number,
             startedAt: $cycle->started_at,
             endedAt: $cycle->ended_at,
             isPublic: $cycle->is_public,
+            isActive: $cycle->is_active,
         ))->execute();
 
         return redirect()->route('organizations.cycles.show', [
@@ -84,6 +95,12 @@ class CycleController extends Controller
             'organization' => $organization,
             'member' => $member,
             'cycle' => $cycle,
+            'url' => [
+                'cycle' => [
+                    'show' => route('organizations.cycles.show', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                    'destroy' => route('organizations.cycles.destroy', ['slug' => $organization->slug, 'cycle' => $cycle->number]),
+                ],
+            ],
         ]);
     }
 
@@ -93,6 +110,7 @@ class CycleController extends Controller
         $cycle = $request->attributes->get('cycle');
 
         (new DestroyCycle(
+            user: Auth::user(),
             cycle: $cycle,
         ))->execute();
 

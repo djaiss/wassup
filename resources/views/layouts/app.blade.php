@@ -18,8 +18,6 @@
     @livewireStyles
   </head>
   <body class="antialiased">
-    <x-banner />
-
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
       @if ($organization->id > 0)
         <div class="bg-stone-950">

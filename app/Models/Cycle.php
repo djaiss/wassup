@@ -44,6 +44,11 @@ class Cycle extends Model
         return $this->hasMany(Goal::class);
     }
 
+    public function checkins(): HasMany
+    {
+        return $this->hasMany(Checkin::class);
+    }
+
     public function getMarkdownDescription(): string
     {
         return Str::markdown($this->description);
