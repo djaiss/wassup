@@ -31,6 +31,7 @@ class UpdateCycle
         $this->validate();
         $this->update();
         $this->toggle();
+
         return $this->cycle;
     }
 

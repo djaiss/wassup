@@ -4,8 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Enums\Permission;
 use App\Models\Cycle;
-use App\Models\Organization;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
