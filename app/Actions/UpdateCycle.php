@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Exceptions\CycleNumberAlreadyTakenException;
 use App\Exceptions\CycleNumberMustBePositiveException;
 use App\Exceptions\CycleStartedAtMustBeBeforeEndedAtException;
 use App\Exceptions\OrganizationMismatchException;

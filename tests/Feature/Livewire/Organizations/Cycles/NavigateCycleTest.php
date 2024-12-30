@@ -2,11 +2,8 @@
 
 namespace Tests\Feature\Livewire\Organizations;
 
-use App\Livewire\Organizations\CreateOrganization;
 use App\Livewire\Organizations\Cycles\NavigateCycle;
 use App\Models\Cycle;
-use App\Models\Organization;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use PHPUnit\Framework\Attributes\Test;
@@ -32,7 +29,7 @@ class NavigateCycleTest extends TestCase
             ->assertDontSee('Next cycle')
             ->assertDontSee('Previous cycle');
 
-        $this->get('/organizations/'.$member->organization->slug.'/cycles/'.$cycle->number)->assertSeeLivewire(NavigateCycle::class);
+        $this->get('/organizations/' . $member->organization->slug . '/cycles/' . $cycle->number)->assertSeeLivewire(NavigateCycle::class);
     }
 
     #[Test]

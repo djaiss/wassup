@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\ViewModels\CycleViewModel;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

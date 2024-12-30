@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Controllers;
 
-use App\Enums\Permission;
 use App\Models\Cycle;
 use App\Models\Goal;
 use Illuminate\Foundation\Testing\RefreshDatabase;
