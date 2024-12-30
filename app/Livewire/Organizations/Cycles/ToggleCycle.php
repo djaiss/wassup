@@ -3,8 +3,6 @@
 namespace App\Livewire\Organizations\Cycles;
 
 use App\Actions\ToggleCycle as ToggleCycleAction;
-use App\Cache\CycleCache;
-use App\Jobs\RefreshCycleCache;
 use App\Models\Cycle;
 use Livewire\Attributes\Locked;
 use Livewire\Component;

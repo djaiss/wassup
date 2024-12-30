@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\ViewModels\CheckinViewModel;
-use App\Http\ViewModels\CycleViewModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

@@ -4,7 +4,6 @@ namespace Tests\Unit\Actions;
 
 use App\Actions\UpdateCycle;
 use App\Enums\Permission;
-use App\Exceptions\CycleNumberAlreadyTakenException;
 use App\Exceptions\CycleNumberMustBePositiveException;
 use App\Exceptions\CycleStartedAtMustBeBeforeEndedAtException;
 use App\Exceptions\OrganizationMismatchException;
