@@ -17,6 +17,7 @@ class ToggleCycle
     public function execute(): Cycle
     {
         $this->toggle();
+        $this->setStartedAt();
         $this->markAllOtherCyclesAsInactive();
 
         return $this->cycle;
@@ -25,6 +26,19 @@ class ToggleCycle
     private function toggle(): void
     {
         $this->cycle->is_active = $this->isActive;
+        $this->cycle->save();
+    }
+
+    private function setStartedAt(): void
+    {
+        if ($this->isActive) {
+            $this->cycle->started_at = now();
+        }
+
+        if (! $this->isActive) {
+            $this->cycle->started_at = null;
+        }
+
         $this->cycle->save();
     }
 

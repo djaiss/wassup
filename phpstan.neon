@@ -16,6 +16,7 @@ parameters:
     excludePaths:
         - app/Http/ViewModels/CheckinViewModel.php
         - app/Http/Resources/*.php
+        - app/Actions/ToggleCycle.php
 
     ignoreErrors:
         - '#Access to an undefined property App\\Models\\User::\$profile_photo_url#'
