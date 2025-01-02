@@ -30,6 +30,7 @@ class ToggleCycleTest extends TestCase
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
             'is_active' => true,
+            'started_at' => '2018-01-01 00:00:00',
         ]);
 
         $cycle = (new ToggleCycle(
@@ -40,6 +41,7 @@ class ToggleCycleTest extends TestCase
         $this->assertDatabaseHas('cycles', [
             'id' => $cycle->id,
             'is_active' => false,
+            'started_at' => null,
         ]);
 
         $this->assertInstanceOf(
