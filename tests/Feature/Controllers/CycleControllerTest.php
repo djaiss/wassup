@@ -92,6 +92,7 @@ class CycleControllerTest extends TestCase
         $member = $this->createMember(permission: Permission::Administrator);
         $cycle = Cycle::factory()->create([
             'organization_id' => $member->organization_id,
+            'number' => 100,
         ]);
 
         $response = $this->actingAs($member->user)
