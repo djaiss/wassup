@@ -13,8 +13,7 @@
       <!-- check if there is a cycle -->
       @if ($cycle)
         <!-- cycle title -->
-              <x-cycle-header :cycle="$cycle" />
-
+        <x-cycle-header :cycle="$cycle" />
 
         <!-- cycle tab: description, goals, check-ins -->
         <div class="mb-8 flex justify-center">
