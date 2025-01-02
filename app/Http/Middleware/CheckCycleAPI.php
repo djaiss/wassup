@@ -23,7 +23,8 @@ class CheckCycleAPI
         try {
             $cycle = Cycle::with('organization')
                 ->where('organization_id', $id)
-                ->findOrFail($cycle);
+                ->where('number', $cycle)
+                ->firstOrFail();
 
             $request->attributes->add(['cycle' => $cycle]);
 
